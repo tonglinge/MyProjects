@@ -1,0 +1,49 @@
+
+2016-03-10 16:03:25,523 - INFO - 无效的命令参数
+2016-03-10 16:11:52,545 - ERROR - __init__() missing 1 required positional argument: 'sock'
+2016-03-10 16:13:01,941 - INFO - 命令无法解析,-u与-d不能同时存在
+2016-03-10 16:14:34,954 - INFO - 命令无法解析,-u与-d不能同时存在
+2016-03-10 16:14:34,954 - INFO - 命令无法解析,-u与-d不能同时存在
+2016-03-10 16:14:49,989 - INFO - 源文件不存在
+2016-03-10 16:14:49,989 - INFO - 源文件不存在
+2016-03-10 16:14:49,989 - INFO - 源文件不存在
+2016-03-10 16:18:07,616 - INFO - 源文件不存在
+2016-03-10 16:18:07,616 - INFO - 源文件不存在
+2016-03-10 16:18:07,616 - INFO - 源文件不存在
+2016-03-10 16:18:07,616 - INFO - 源文件不存在
+2016-03-10 16:18:29,981 - ERROR - Failure
+2016-03-10 16:18:29,981 - ERROR - Failure
+2016-03-10 16:18:29,981 - ERROR - Failure
+2016-03-10 16:18:29,981 - ERROR - Failure
+2016-03-10 16:18:29,981 - ERROR - Failure
+2016-03-10 16:18:30,674 - ERROR - Failure
+2016-03-10 16:18:30,674 - ERROR - Failure
+2016-03-10 16:18:30,674 - ERROR - Failure
+2016-03-10 16:18:30,674 - ERROR - Failure
+2016-03-10 16:18:30,674 - ERROR - Failure
+2016-03-10 16:28:08,885 - ERROR - Unable to connect to 192.168.1.128: [Errno 111] Connection refused
+2016-03-10 18:03:54,313 - ERROR - Unable to connect to 192.168.2.128: [Errno 113] No route to host
+2016-03-10 18:13:04,059 - ERROR - '-t' is not in list
+2016-03-10 18:13:04,059 - ERROR - '-t' is not in list
+2016-03-10 18:18:39,816 - INFO - 命令语法错误,必须指定源和目的文件(-s -d)
+2016-03-10 23:05:42,255 - ERROR - Private key file is encrypted
+2016-03-10 23:11:13,550 - ERROR - 无效的命令参数
+2016-03-10 23:11:25,243 - INFO - 用户test执行命令q
+2016-03-10 23:11:53,944 - ERROR - 无效的命令参数
+2016-03-10 23:12:03,038 - INFO - 用户test执行命令show host -a
+2016-03-10 23:12:03,038 - ERROR - 无效的命令参数
+2016-03-10 23:12:03,038 - ERROR - 无效的命令参数
+2016-03-10 23:12:05,553 - INFO - 用户test执行命令show hosts -a
+2016-03-10 23:12:05,553 - INFO - 用户test执行命令show hosts -a
+2016-03-10 23:12:15,799 - INFO - 用户test执行命令help
+2016-03-10 23:12:15,799 - INFO - 用户test执行命令help
+2016-03-10 23:12:27,348 - INFO - 用户test执行命令cmd -g G02 -c "df -hl"
+2016-03-10 23:12:27,348 - INFO - 用户test执行命令cmd -g G02 -c "df -hl"
+2016-03-10 23:13:50,914 - INFO - 用户test执行命令cmd -h 192.168.2.129 -c "cat /home/super/PycharmProjects/Day8/logs/oplog.log"
+2016-03-10 23:13:50,914 - INFO - 用户test执行命令cmd -h 192.168.2.129 -c "cat /home/super/PycharmProjects/Day8/logs/oplog.log"
+2016-03-10 23:14:21,279 - INFO - 用户test执行命令q
+2016-03-10 23:14:21,279 - INFO - 用户test执行命令q
+2016-03-11 09:52:12,850 - ERROR - 无效的命令
+2016-03-11 09:53:04,522 - INFO - 未找到该组对应的主机信息
+2016-03-11 09:53:04,522 - ERROR - 'NoneType' object is not iterable
+2016-03-11 09:57:41,614 - ERROR - Unable to connect to 192.168.2.128: [Errno 113] No route to host
