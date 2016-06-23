@@ -1,0 +1,51 @@
+
+2016-03-03 16:48:28 - error -  client - show - invalid literal for int() with base 10: '       \n' 
+2016-03-03 17:03:17 - error -  client - show - 'utf-8' codec can't decode bytes in position 146-147: unexpected end of data 
+2016-03-03 17:25:37 - error -  client - show - unorderable types: int() < str() 
+2016-03-03 17:27:10 - error -  client - show - unorderable types: int() < str() 
+2016-03-03 17:28:40 - error -  client - show - invalid literal for int() with base 10: '件.txt\n' 
+2016-03-03 17:28:49 - error -  client - show - invalid literal for int() with base 10: '1503|2016:03-03 17:00:07                 0    1223.txt\n2016:03-03 17:00:13  <DIR>          0    fold' 
+2016-03-03 22:28:56 - info -  send file basic info:put|movie.mp4|421291871|b93252c806046e03fedb5b25ab0e02cc 
+2016-03-03 22:28:56 - info -  upload file, received from server:0|0 
+2016-03-03 22:29:09 - info -  upload file<e:\movie.mp4> successful 
+2016-06-08 09:06:00 - error -  client - show - invalid literal for int() with base 10: '' 
+2016-06-08 09:07:32 - error -  [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2016-06-08 09:07:36 - error -  client - show - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2016-06-08 09:07:56 - error -  [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2016-06-08 09:08:02 - error -  client - show - [WinError 10053] 你的主机中的软件中止了一个已建立的连接。 
+2016-06-13 14:04:35 - info -  send file basic info:put|puta.txt|42|f2f83cef16b155b1f96b966831b6a4ad 
+2016-06-13 14:04:35 - info -  upload file, received from server:0|0 
+2016-06-13 14:04:35 - info -  upload file<d:/puta.txt> successful 
+2016-06-13 14:05:17 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-13 14:05:17 - info -  upload file, received from server:0|0 
+2016-06-13 14:05:18 - info -  upload file<d:/django.pdf> successful 
+2016-06-13 14:06:03 - info -  send file basic info:put|django.zip|5994535|9a3da1fa3e0ef8c192391b2030963265 
+2016-06-13 14:06:03 - info -  upload file, received from server:0|0 
+2016-06-13 14:06:03 - info -  upload file<d:/django.zip> successful 
+2016-06-21 16:23:44 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:23:44 - info -  upload file, received from server:0|0 
+2016-06-21 16:23:44 - error -  upload file failed!tuple index out of range 
+2016-06-21 16:23:54 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:27:59 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:27:59 - info -  upload file, received from server:1|2103 
+2016-06-21 16:27:59 - error -  upload file failed!tuple index out of range 
+2016-06-21 16:28:08 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:29:44 - info -  send file basic info:put|django.zip|5994535|9a3da1fa3e0ef8c192391b2030963265 
+2016-06-21 16:29:44 - info -  upload file, received from server:0|0 
+2016-06-21 16:29:44 - info -  upload file<d:/django.zip> successful 
+2016-06-21 16:31:10 - info -  send file basic info:put|puta.txt|36288|972c34edbcd99933a6b47ca9b0f70013 
+2016-06-21 16:31:10 - info -  upload file, received from server:0|0 
+2016-06-21 16:31:10 - error -  upload file failed!tuple index out of range 
+2016-06-21 16:31:31 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:34:09 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:34:09 - info -  upload file, received from server:0|0 
+2016-06-21 16:34:09 - info -  upload file<d:/django.pdf> successful 
+2016-06-21 16:34:23 - info -  send file basic info:put|puta.txt|36288|972c34edbcd99933a6b47ca9b0f70013 
+2016-06-21 16:34:23 - info -  upload file, received from server:1|2103 
+2016-06-21 16:34:23 - info -  upload file<d:/puta.txt> successful 
+2016-06-21 16:35:21 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:35:21 - info -  upload file, received from server:0|0 
+2016-06-21 16:35:21 - info -  upload file<d:/django.pdf> successful 
+2016-06-21 16:35:51 - info -  send file basic info:put|django.pdf|6194034|ca2246ea2d71612bcb22afa05aa4d553 
+2016-06-21 16:35:51 - info -  upload file, received from server:0|0 
+2016-06-21 16:35:52 - info -  upload file<d:/django.pdf> successful 

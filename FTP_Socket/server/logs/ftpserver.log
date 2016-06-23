@@ -1,0 +1,148 @@
+
+2016-03-03 16:48:10 - info - client ('127.0.0.1', 54497) connected 
+2016-03-03 16:48:17 - info - client ('127.0.0.1', 54497) send command auth 
+2016-03-03 16:48:21 - info - client ('127.0.0.1', 54497) send command auth 
+2016-03-03 16:48:23 - info - client ('127.0.0.1', 54497) send command show 
+2016-03-03 16:48:28 - info - client ('127.0.0.1', 54497) send command show 
+2016-03-03 16:48:32 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 16:49:17 - info - client ('127.0.0.1', 54518) connected 
+2016-03-03 16:49:25 - info - client ('127.0.0.1', 54518) send command auth 
+2016-03-03 16:49:41 - info - client ('127.0.0.1', 54518) send command show 
+2016-03-03 16:51:31 - info - client ('127.0.0.1', 54518) send command show 
+2016-03-03 16:52:04 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 16:52:04 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 16:53:32 - info - client ('127.0.0.1', 54564) connected 
+2016-03-03 16:53:36 - info - client ('127.0.0.1', 54564) send command auth 
+2016-03-03 16:53:45 - info - client ('127.0.0.1', 54564) send command show 
+2016-03-03 16:54:11 - info - client ('127.0.0.1', 54564) send command show 
+2016-03-03 16:54:19 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 16:54:19 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 16:54:48 - info - client ('127.0.0.1', 54586) connected 
+2016-03-03 16:57:45 - info - client ('127.0.0.1', 54586) send command auth 
+2016-03-03 16:57:48 - info - client ('127.0.0.1', 54586) send command show 
+2016-03-03 16:58:29 - info - client ('127.0.0.1', 54586) send command show 
+2016-03-03 16:58:43 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 16:58:43 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 16:59:21 - info - client ('127.0.0.1', 54622) connected 
+2016-03-03 16:59:23 - info - client ('127.0.0.1', 54622) send command auth 
+2016-03-03 17:00:23 - info - client ('127.0.0.1', 54622) send command show 
+2016-03-03 17:01:23 - info - client ('127.0.0.1', 54622) send command show 
+2016-03-03 17:02:04 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:02:05 - info - client ('127.0.0.1', 54629) connected 
+2016-03-03 17:02:09 - info - client ('127.0.0.1', 54629) send command auth 
+2016-03-03 17:02:13 - info - client ('127.0.0.1', 54629) send command show 
+2016-03-03 17:02:42 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:02:51 - info - client ('127.0.0.1', 54635) connected 
+2016-03-03 17:02:54 - info - client ('127.0.0.1', 54635) send command auth 
+2016-03-03 17:03:00 - info - client ('127.0.0.1', 54635) send command show 
+2016-03-03 17:03:41 - info - client ('127.0.0.1', 54635) send command show 
+2016-03-03 17:04:46 - info - client ('127.0.0.1', 54663) connected 
+2016-03-03 17:04:49 - info - client ('127.0.0.1', 54663) send command auth 
+2016-03-03 17:04:57 - info - client ('127.0.0.1', 54663) send command show 
+2016-03-03 17:05:34 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:06:02 - info - client ('127.0.0.1', 54697) connected 
+2016-03-03 17:06:08 - info - client ('127.0.0.1', 54697) send command auth 
+2016-03-03 17:06:30 - info - client ('127.0.0.1', 54697) send command show 
+2016-03-03 17:10:08 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:12:25 - info - client ('127.0.0.1', 54765) connected 
+2016-03-03 17:12:29 - info - client ('127.0.0.1', 54765) send command auth 
+2016-03-03 17:12:36 - info - client ('127.0.0.1', 54765) send command show 
+2016-03-03 17:14:03 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:19:17 - info - client ('127.0.0.1', 54791) connected 
+2016-03-03 17:19:21 - info - client ('127.0.0.1', 54791) send command auth 
+2016-03-03 17:19:22 - info - client ('127.0.0.1', 54791) send command show 
+2016-03-03 17:20:46 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:22:14 - info - client ('127.0.0.1', 54803) connected 
+2016-03-03 17:22:18 - info - client ('127.0.0.1', 54803) send command auth 
+2016-03-03 17:22:20 - info - client ('127.0.0.1', 54803) send command show 
+2016-03-03 17:22:43 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:22:43 - info - client ('127.0.0.1', 54805) connected 
+2016-03-03 17:22:44 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:22:55 - info - client ('127.0.0.1', 54807) connected 
+2016-03-03 17:23:00 - info - client ('127.0.0.1', 54807) send command auth 
+2016-03-03 17:23:01 - info - client ('127.0.0.1', 54807) send command show 
+2016-03-03 17:23:11 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:25:30 - info - client ('127.0.0.1', 54818) connected 
+2016-03-03 17:25:35 - info - client ('127.0.0.1', 54818) send command auth 
+2016-03-03 17:25:37 - info - client ('127.0.0.1', 54818) send command show 
+2016-03-03 17:25:48 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:27:02 - info - client ('127.0.0.1', 54828) connected 
+2016-03-03 17:27:08 - info - client ('127.0.0.1', 54828) send command auth 
+2016-03-03 17:27:10 - info - client ('127.0.0.1', 54828) send command show 
+2016-03-03 17:27:31 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:27:35 - info - client ('127.0.0.1', 54835) connected 
+2016-03-03 17:27:39 - info - client ('127.0.0.1', 54835) send command auth 
+2016-03-03 17:27:48 - info - client ('127.0.0.1', 54835) send command show 
+2016-03-03 17:28:17 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:28:29 - info - client ('127.0.0.1', 54840) connected 
+2016-03-03 17:28:33 - info - client ('127.0.0.1', 54840) send command auth 
+2016-03-03 17:28:34 - info - client ('127.0.0.1', 54840) send command show 
+2016-03-03 17:28:40 - info - client ('127.0.0.1', 54840) send command show 
+2016-03-03 17:28:49 - info - client ('127.0.0.1', 54840) send command show 
+2016-03-03 17:28:54 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:32:13 - info - client ('127.0.0.1', 54862) connected 
+2016-03-03 17:32:17 - info - client ('127.0.0.1', 54862) send command auth 
+2016-03-03 17:32:20 - info - client ('127.0.0.1', 54862) send command auth 
+2016-03-03 17:32:29 - info - client ('127.0.0.1', 54862) send command show 
+2016-03-03 17:38:16 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 17:39:28 - info - client ('127.0.0.1', 54918) connected 
+2016-03-03 17:39:32 - info - client ('127.0.0.1', 54918) send command auth 
+2016-03-03 17:39:39 - info - client ('127.0.0.1', 54918) send command show 
+2016-03-03 17:40:02 - info - client ('127.0.0.1', 54918) send command show 
+2016-03-03 17:40:21 - info - client ('127.0.0.1', 54918) send command show 
+2016-03-03 17:40:25 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-03-03 22:28:07 - info - client ('127.0.0.1', 56471) connected 
+2016-03-03 22:28:13 - info - client ('127.0.0.1', 56471) send command auth 
+2016-03-03 22:28:16 - info - client ('127.0.0.1', 56471) send command show 
+2016-03-03 22:28:21 - info - client ('127.0.0.1', 56471) send command show 
+2016-03-03 22:28:56 - info - client ('127.0.0.1', 56471) send command put 
+2016-03-03 22:29:23 - info - client ('127.0.0.1', 56471) send command show 
+2016-03-03 22:29:28 - info - client ('127.0.0.1', 56471) disconnected 
+2016-06-08 09:05:02 - info - client ('127.0.0.1', 52737) connected 
+2016-06-08 09:05:51 - info - client ('127.0.0.1', 52737) send command auth 
+2016-06-08 09:06:00 - info - client ('127.0.0.1', 52737) send command show 
+2016-06-08 09:06:00 - error - exec show error :[WinError 3] 系统找不到指定的路径。: 'E:\\Pythontest\\Examples\\Day7\\server\\uploads\\super' 
+2016-06-08 09:06:00 - error - [WinError 10038] 在一个非套接字上尝试了一个操作。 
+2016-06-13 14:03:11 - info - client ('127.0.0.1', 58562) connected 
+2016-06-13 14:03:24 - info - client ('127.0.0.1', 58562) send command auth 
+2016-06-13 14:03:30 - info - client ('127.0.0.1', 58562) send command auth 
+2016-06-13 14:04:03 - info - client ('127.0.0.1', 58562) send command auth 
+2016-06-13 14:04:35 - info - client ('127.0.0.1', 58562) send command put 
+2016-06-13 14:05:17 - info - client ('127.0.0.1', 58562) send command put 
+2016-06-13 14:06:03 - info - client ('127.0.0.1', 58562) send command put 
+2016-06-13 14:06:44 - info - client ('127.0.0.1', 58562) send command show 
+2016-06-13 14:12:28 - info - client ('127.0.0.1', 58562) disconnected 
+2016-06-21 16:22:58 - info - client ('127.0.0.1', 56976) connected 
+2016-06-21 16:23:06 - info - client ('127.0.0.1', 56976) send command auth 
+2016-06-21 16:23:10 - info - client ('127.0.0.1', 56976) send command auth 
+2016-06-21 16:23:14 - info - client ('127.0.0.1', 56976) send command auth 
+2016-06-21 16:23:44 - info - client ('127.0.0.1', 56976) send command put 
+2016-06-21 16:25:12 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-06-21 16:25:12 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-06-21 16:27:34 - info - client ('127.0.0.1', 57054) connected 
+2016-06-21 16:27:37 - info - client ('127.0.0.1', 57054) send command auth 
+2016-06-21 16:27:59 - info - client ('127.0.0.1', 57054) send command put 
+2016-06-21 16:28:57 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-06-21 16:28:57 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-06-21 16:29:16 - info - client ('127.0.0.1', 57082) connected 
+2016-06-21 16:29:18 - info - client ('127.0.0.1', 57082) send command auth 
+2016-06-21 16:29:44 - info - client ('127.0.0.1', 57082) send command put 
+2016-06-21 16:30:47 - info - client ('127.0.0.1', 57082) disconnected 
+2016-06-21 16:30:50 - info - client ('127.0.0.1', 57107) connected 
+2016-06-21 16:30:55 - info - client ('127.0.0.1', 57107) send command auth 
+2016-06-21 16:31:10 - info - client ('127.0.0.1', 57107) send command put 
+2016-06-21 16:32:03 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-06-21 16:32:03 - error - [WinError 10054] 远程主机强迫关闭了一个现有的连接。 
+2016-06-21 16:33:22 - info - client ('127.0.0.1', 57145) connected 
+2016-06-21 16:33:24 - info - client ('127.0.0.1', 57145) send command auth 
+2016-06-21 16:34:09 - info - client ('127.0.0.1', 57145) send command put 
+2016-06-21 16:34:23 - info - client ('127.0.0.1', 57145) send command put 
+2016-06-21 16:34:48 - info - client ('127.0.0.1', 57145) disconnected 
+2016-06-21 16:35:12 - info - client ('127.0.0.1', 57178) connected 
+2016-06-21 16:35:15 - info - client ('127.0.0.1', 57178) send command auth 
+2016-06-21 16:35:21 - info - client ('127.0.0.1', 57178) send command put 
+2016-06-21 16:35:27 - info - client ('127.0.0.1', 57178) disconnected 
+2016-06-21 16:35:42 - info - client ('127.0.0.1', 57192) connected 
+2016-06-21 16:35:45 - info - client ('127.0.0.1', 57192) send command auth 
+2016-06-21 16:35:51 - info - client ('127.0.0.1', 57192) send command put 
+2016-06-21 16:36:10 - info - client ('127.0.0.1', 57192) disconnected 
