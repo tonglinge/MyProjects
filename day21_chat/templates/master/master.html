@@ -1,0 +1,204 @@
+{% load common %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<title>{% website_title %}</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/libs/font-awesome.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/compiled/theme_styles.css"/>
+    <script src="/static/js/jquery-2.2.3.min.js"></script>
+    {% block self_define_css %} {% endblock %}
+</head>
+<body class="pace-done theme-turquoise">{% csrf_token %}
+<div id="theme-wrapper">
+	<!-- 顶部工具栏 -->
+	<header class="navbar" id="header-navbar">
+		<div class="container">
+			<a href="/" id="logo" class="navbar-brand">
+				<span class="text-center"><strong>Web聊天室</strong></span>
+			</a>
+
+			<div class="clearfix">
+				<button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+					<span class="sr-only">Toggle navigation</span>
+
+				</button>
+				<div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
+					<ul class="nav navbar-nav pull-left">
+						<li>
+							<a class="btn" id="make-small-nav"><i class="fa fa-bars"></i></a>
+						</li>
+					</ul>
+				</div>
+				<div class="nav-no-collapse pull-right" id="header-nav">
+					<ul class="nav navbar-nav pull-right">
+						<li class="dropdown profile-dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<img id="login_user_head_img" uid={{ request.user.loginuser.id }} src="/static/img/samples/{{ request.user.loginuser.head_img }}"/>
+									<span class="hidden-xs">{{ request.user.loginuser.fullname }}</span>
+							</a>
+						</li>
+						<li class="hidden-xxs">
+							<a href="/logout/" class="btn"><i class="fa fa-power-off"></i> 注销 </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- 顶部横条工具栏结束 -->
+
+	<div id="page-wrapper" class="container nav-small">
+		<div class="row">
+			<div id="nav-col">
+				<section id="col-left" class="col-left-nano">
+					<div id="col-left-inner" class="col-left-nano-content">
+						<div id="user-left-box" class="clearfix hidden-sm hidden-xs">
+							<img alt="" src="/static/img/samples/{{ request.user.loginuser.head_img }}"/>
+							<div class="user-box">
+								<span class="name">
+									欢迎<br/>{{ request.user.loginuser.fullname }}
+								</span>
+							</div>
+						</div>
+
+						<!-- 开始左侧菜单选项 -->
+						<div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
+							<ul class="nav nav-pills nav-stacked">
+								<li>
+									<a href="#">
+										<i class="fa fa-dashboard"></i>
+										<span>Web Chat</span>
+										<span class="label label-info label-circle pull-right"></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="dropdown-toggle">
+										<i class="fa fa-desktop"></i>
+										<span>功能菜单</span>
+										<i class="fa fa-chevron-circle-right drop-icon"></i>
+									</a>
+									<ul class="submenu">
+										<li><a href="/">开始聊天</a></li>
+										<li><a href="/">查找好友</a></li>
+
+
+									</ul>
+								</li>
+                    <!--
+								<li>
+									<a href="#" class="dropdown-toggle">
+										<i class="fa fa-users"></i><span>销售维护</span>
+										<i class="fa fa-chevron-circle-right drop-icon"></i>
+									</a>
+									<ul class="submenu">
+										<li><a href="/">咨询记录</a></li>
+
+									</ul>
+								</li>
+								<li>
+									<a href="#" class="dropdown-toggle">
+										<i class="fa fa-bar-chart-o"></i>
+										<span>日常教学</span>
+										<i class="fa fa-chevron-circle-right drop-icon"></i>
+									</a>
+									<ul class="submenu">
+										<li><a href="/courserecord/">上课记录</a></li>
+                                        <li><a href="/">签到登记</a></li>
+										<li><a href="/">成绩查询</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#" class="dropdown-toggle">
+										<i class="fa fa-desktop"></i>
+										<span>菜单四</span>
+										<i class="fa fa-chevron-circle-right drop-icon"></i>
+									</a>
+									<ul class="submenu">
+										<li><a href="#">子菜单1</a></li>
+										<li><a href="#">子菜单2</a></li>
+										<li><a href="#">子菜单3</a></li>
+										<li><a href="#">子菜单4</a></li>
+
+									</ul>
+								</li>
+								<li>
+									<a href="#" class="dropdown-toggle">
+										<i class="fa fa-edit"></i>
+										<span>菜单五</span>
+										<i class="fa fa-chevron-circle-right drop-icon"></i>
+									</a>
+									<ul class="submenu">
+										<li><a href="#">子菜单1</a></li>
+										<li><a href="#">子菜单2</a></li>
+										<li><a href="#">子菜单3</a></li>
+										<li><a href="#">子菜单4</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#" class="dropdown-toggle">
+										<i class="fa fa-desktop"></i>
+										<span>菜单六</span>
+										<i class="fa fa-chevron-circle-right drop-icon"></i>
+									</a>
+									<ul class="submenu">
+										<li><a href="#">子菜单1</a></li>
+										<li><a href="#">子菜单2</a></li>
+										<li><a href="#">子菜单3</a></li>
+										<li>
+											<a href="#" class="dropdown-toggle">子菜单4
+												<i class="fa fa-chevron-circle-right drop-icon"></i>
+											</a>
+											<ul class="submenu">
+												<li><a href="#">子菜单4-1</a></li>
+												<li><a href="#">子菜单4-1</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+                       -->
+
+							</ul>
+						</div>
+					</div>
+				</section>
+			</div>
+
+
+			<div id="content-wrapper">
+
+				<!--  block content  开始右侧内容 -->
+				<div style="opacity: 1;" class="row">
+                    <div class="col-lg-12">
+
+					    {% block contain %}  {% endblock %}
+
+                    </div>
+					<!-- 底部框  block footer %} -->
+					<footer id="footer-bar" class="row">
+						<p id="footer-copyright" class="col-xs-12">
+							&copy; 2014
+							<a href="" target="_blank">Adbee digital</a>.
+								   Powered by Centaurus Theme.
+						</p>
+					</footer>
+					<!--  end block%} -->
+			   </div>
+
+		  	</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/scripts.js"></script>
+{% block self_define_js %} {% endblock %}
+
+</body>
+</html>

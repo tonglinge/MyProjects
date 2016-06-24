@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oldboy</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/compiled/theme_styles.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/libs/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/libs/selfcss.css"/>
+</head>
+<body id="login-page">
+
+<div class="container">
+    <div id="login-box">
+        <div id="login-box-holder">
+            <div class="row">
+                <div class="col-xs-12">
+                    <header id="login-header">
+                        <div id="login-logo">
+                            <span class="text-center"><strong>Let's Chat</strong></span>
+                        </div>
+                    </header>
+                    <div id="login-box-inner">
+                        <div id="err-msg"><span id="err-uname" style="color:red;">{{ errors }}</span></div>
+                        <form role="form" method="post" action="" >{% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input class="form-control" id="login-uname" placeholder="用户名" name="username" type="text">
+                            </div>
+                            <div class="input-err-tip username-tip" hidden>
+                                <span id="form-user-err" class="label-danger">*请输入用户名</span>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input class="form-control" id="login-pwd" placeholder="密码" type="password" name="password">
+                            </div>
+                            <div class="input-err-tip pwd-tip" hidden>
+                                <span id="form-pwd-err" class="label-danger">*请输入密码</span>
+                            </div>
+                            <div id="remember-me-wrapper">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="checkbox-nice">
+                                            <input id="remember-me" checked="checked" type="checkbox">
+                                            <label for="remember-me">记住我</label>
+                                        </div>
+                                    </div>
+                                        <a href="forgot-password.html" id="login-forget-link" class="col-xs-6">
+                                            忘记密码?
+                                        </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="submit" class="btn btn-success col-xs-12" id="login_btn">登录</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="login-box-footer">
+            <div class="row">
+                <div class="col-xs-12">还没有账户?
+                    <a href="/regist/">马上注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="/static/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/login.js"></script>
+</div>
+</body>
+</html>

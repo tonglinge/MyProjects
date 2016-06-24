@@ -1,0 +1,99 @@
+/* login css */
+.input-error{
+    border-color:red;
+}
+
+.messagecount{
+    background: none repeat scroll 0 0 #e74c3c;
+    border-radius: 50%;
+    background-clip: padding-box;
+    color: #fff;
+    display: block;
+    font-size: 9px;
+    height: 16px;
+    line-height: 14px;
+    position: absolute;
+    text-align: center;
+}
+/*tab用户组消息提示*/
+#user_totalmsg{
+    left: 57px;
+    top: 4px;
+    width: 16px;
+}
+.usertotalmsg{
+    left: 37px;
+    top: 10px;
+    width: 16px;
+}
+.groupmsg{
+    top:70px;
+    left:100px;
+    width:16px;
+}
+#group_totalmsg{
+    left: 90px;
+    top: 5px;
+    width: 16px;
+}
+#usercount{
+    left: 40px;
+    top: 15px;
+    width: 16px;
+}
+.tab-content-body{
+  height: 500px;
+  overflow-y: scroll;;
+}
+.conversation-content{
+    height: 430px;
+}
+.conversation-inner
+{
+     height: 400px;
+    overflow-y: scroll;;
+}
+.submenu2{
+    background-color: white !important;
+}
+.fgroup{
+    background-color: #1abc9c;
+    border-bottom: 1px solid #9daccb;
+}
+.fgroup span{
+    color: #fff;
+    font-weight: 500;
+}
+.fgroup:hover{
+    background-color: #1abc9c !important;
+    border-color: transparent;
+    border-left:0;
+}
+.fgroup:visited{
+    background-color: #1abc9c !important;
+    border-color: transparent;
+}
+.conversation-content{
+    border:1px solid #e7ebee;
+}
+.chat-images a:hover{
+        cursor:pointer;
+}
+#show_members{
+    paddint-top:10px;
+}
+#show_members li{
+    list-style-type: none;
+}
+/*定义的QQ表情样式*/
+.comment{width:680px; margin:20px auto; position:relative}
+.comment h3{height:28px; line-height:28px}
+.com_form{width:100%; position:relative}
+.input{width:99%; height:60px; border:1px solid #ccc}
+.com_form p{height:28px; line-height:28px; position:relative}
+span.emotion{width:42px; height:20px;padding-left:20px; cursor:pointer}
+span.emotion:hover{background-position:2px -28px}
+.qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;}
+.qqFace table td{padding:0px;}
+.qqFace table td img{cursor:pointer;border:1px #fff solid;}
+.qqFace table td img:hover{border:1px #0066cc solid;}

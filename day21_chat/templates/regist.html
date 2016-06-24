@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMDB注册</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/compiled/theme_styles.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/libs/font-awesome.css">
+</head>
+<body id="login-page">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="login-box">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <header id="login-header">
+                            <div id="login-logo">
+                                <span class="text-center"><strong>CMDB 用户注册</strong></span>
+                            </div>
+                        </header>
+                        <div id="login-box-inner">
+                            <div class="label-info"><span style="color: red;" id="error-box"></span></div>
+                            <form role="form" method='post' action="{% url 'regist' %}">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input class="form-control" type="text" id="uname" name="uname" placeholder="用户名">
+                                </div>
+                                <div class="input-err-tip username-tip"><span id="err-uname">* 请输入用户名</span></div>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                                    <input class="form-control" type="text" id="fullname" name="fullname" placeholder="姓名">
+                                </div>
+                                <div class="input-err-tip fullname-tip"><span id="err-fullname"></span></div>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="Email ">
+                                </div>
+                                <div class="input-err-tip email-tip"><span id="reg-email-tip"></span></div>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="pwd" name="password" placeholder="输入密码">
+                                </div>
+                                <div class="input-err-tip pwd-tip"><span id="err-pwd" ></span></div>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
+                                    <input type="password" class="form-control"  id="confirm-pwd" placeholder="再次输入密码">
+                                </div>
+                                <div class="input-err-tip  confirm-pwd-tip"><span id="err-confirmpwd"></span></div>
+                                <div id="remember-me-wrapper">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="checkbox-nice">
+                                                <input type="checkbox" id="terms-cond" checked="checked">
+                                                <label for="terms-cond"> 我已阅读并同意《用户注册协议》</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button  type="submit" class="btn btn-success col-xs-12" id="summit">立即注册</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="login-box-footer">
+                                <div class="row">
+                                    <div class="col-xs-12">已有账户?
+                                        <a href="login.html">返回登录</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="/static/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/regist.js"></script>
+</body>
+</html>
