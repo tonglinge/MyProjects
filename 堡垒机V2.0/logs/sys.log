@@ -1,0 +1,42 @@
+
+2016-03-31 10:44:45,963 - ERROR - [bll.hosts.load_hosts_by_group] Instance <Groups at 0x7f84f54fe908> is not bound to a Session; attribute refresh operation cannot proceed
+2016-03-31 10:44:45,964 - ERROR - [module.admin.add_login_user] 'NoneType' object is not iterable
+2016-03-31 10:49:22,475 - ERROR - [bll.hosts.load_hosts_by_group] Instance <Groups at 0x7f64c2c02d30> is not bound to a Session; attribute refresh operation cannot proceed
+2016-03-31 10:49:22,490 - ERROR - [module.admin.add_login_user] 'NoneType' object is not iterable
+2016-03-31 11:01:49,631 - ERROR - [module.admin.add_login_user] Instance <Groups at 0x7f167a5d9550> is not bound to a Session; attribute refresh operation cannot proceed
+2016-03-31 11:12:08,183 - ERROR - [module.admin.add_login_user] Instance <Groups at 0x7fd2065c25c0> is not bound to a Session; attribute refresh operation cannot proceed
+2016-03-31 11:18:51,245 - ERROR - [module.admin.add_login_user] Instance <Groups at 0x7f513704b6a0> is not bound to a Session; attribute refresh operation cannot proceed
+2016-03-31 11:24:26,648 - ERROR - [module.admin.add_login_user] 'list' object has no attribute 'id'
+2016-03-31 11:30:26,277 - ERROR - [module.admin.add_login_user] 'SSH_User' object has no attribute 'auth_name'
+2016-03-31 11:34:03,455 - ERROR - [module.admin.add_login_user] unhashable type: 'dict'
+2016-03-31 12:37:23,464 - ERROR - [module.admin.add_login_user] 'dict' object has no attribute 'sid'
+2016-03-31 12:40:30,567 - ERROR - [module.admin.add_login_user] tuple index out of range
+2016-03-31 13:18:20,341 - ERROR - [bll.login_user.insert_ssh_user] 'in <string>' requires string as left operand, not InstrumentedAttribute
+
+2016-03-31 15:27:56,091 - ERROR - [bin.main.user_run] show_message() missing 1 required positional argument: 'msgtype'
+2016-03-31 17:26:30,505 - ERROR - [module.interactive.run] No existing session
+2016-03-31 17:32:18,389 - ERROR - [module.interactive.run] (25, 'Inappropriate ioctl for device')
+2016-03-31 17:32:31,692 - ERROR - [module.interactive.run] (25, 'Inappropriate ioctl for device')
+2016-03-31 17:33:29,335 - INFO - [bll.op_log.save_log] (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`baolei`.`bl_op_logs`, CONSTRAINT `bl_op_logs_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `bl_login_user` (`id`))') [SQL: 'INSERT INTO bl_op_logs (uid, opdate, optype, opmsg) VALUES (%(uid)s, %(opdate)s, %(optype)s, %(opmsg)s)'] [parameters: {'optype': 'login', 'opmsg': '用户test登录系统失败!', 'uid': 0, 'opdate': datetime.datetime(2016, 3, 31, 17, 33, 29, 288654)}]
+2016-03-31 17:33:29,369 - INFO - [bll.op_log.last_login_date] 'NoneType' object has no attribute 'opdate'
+2016-03-31 17:43:48,108 - ERROR - [bin.main.user_run] save_log() missing 1 required positional argument: 'optype'
+2016-03-31 17:46:55,980 - INFO - [bll.op_log.save_log] (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`baolei`.`bl_op_logs`, CONSTRAINT `bl_op_logs_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `bl_login_user` (`id`))') [SQL: 'INSERT INTO bl_op_logs (uid, opdate, optype, opmsg) VALUES (%(uid)s, %(opdate)s, %(optype)s, %(opmsg)s)'] [parameters: {'optype': 'login', 'opmsg': '用户test登录系统失败!', 'opdate': datetime.datetime(2016, 3, 31, 17, 46, 55, 957742), 'uid': 0}]
+2016-03-31 17:46:55,996 - INFO - [bll.op_log.last_login_date] 'NoneType' object has no attribute 'opdate'
+2016-03-31 21:25:09,417 - INFO - [bll.op_log.save_log] (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`baolei`.`bl_op_logs`, CONSTRAINT `bl_op_logs_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `bl_login_user` (`id`))') [SQL: 'INSERT INTO bl_op_logs (uid, opdate, optype, opmsg) VALUES (%(uid)s, %(opdate)s, %(optype)s, %(opmsg)s)'] [parameters: {'optype': 'login', 'opdate': datetime.datetime(2016, 3, 31, 21, 25, 9, 404057), 'uid': 0, 'opmsg': '用户test登录系统失败!'}]
+2016-03-31 21:25:09,475 - INFO - [bll.op_log.last_login_date] 'NoneType' object has no attribute 'opdate'
+2016-03-31 22:40:02,711 - ERROR - [bin.main.user_run] invalid literal for int() with base 10: 'ls'
+2016-03-31 22:52:38,521 - ERROR - [module.interactive.shell] must be str, not bytes
+2016-03-31 22:52:56,032 - ERROR - [bin.main.user_run] local variable 'op_log' referenced before assignment
+2016-03-31 22:53:06,174 - ERROR - [module.interactive.shell] must be str, not bytes
+2016-03-31 23:17:56,175 - ERROR - [bin.main.user_run] local variable 'op_log' referenced before assignment
+2016-03-31 23:42:47,265 - ERROR - [module.interactive.shell] an integer is required (got type str)
+2016-03-31 23:50:47,188 - ERROR - [bin.main.user_run] local variable 'op_log' referenced before assignment
+2016-04-01 10:53:01,361 - INFO - [bll.op_log.last_login_date] 'NoneType' object has no attribute 'opdate'
+2016-04-01 10:58:06,183 - INFO - [bll.op_log.last_login_date] 'NoneType' object has no attribute 'opdate'
+2016-04-01 10:58:13,359 - ERROR - [module.interactive.run] Authentication failed.
+2016-04-01 11:15:11,136 - INFO - [bll.op_log.last_login_date] 'NoneType' object has no attribute 'opdate'
+2016-04-01 11:15:11,235 - INFO - [bll.op_log.save_log] (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`baolei`.`bl_op_logs`, CONSTRAINT `bl_op_logs_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `bl_login_user` (`id`))') [SQL: 'INSERT INTO bl_op_logs (uid, opdate, optype, opmsg) VALUES (%(uid)s, %(opdate)s, %(optype)s, %(opmsg)s)'] [parameters: {'opmsg': '用户user01登录系统失败!', 'opdate': datetime.datetime(2016, 4, 1, 11, 15, 11, 139474), 'optype': 'login', 'uid': 0}]
+2016-04-01 11:15:17,815 - INFO - [bll.op_log.last_login_date] 'NoneType' object has no attribute 'opdate'
+2016-04-01 11:15:22,227 - ERROR - [bin.main.user_run] local variable 'ssh_user' referenced before assignment
+2016-04-01 11:21:10,952 - ERROR - [module.interactive.run] Authentication failed.
+2016-04-01 11:22:17,259 - ERROR - [bin.main.user_run] local variable 'op_log' referenced before assignment
