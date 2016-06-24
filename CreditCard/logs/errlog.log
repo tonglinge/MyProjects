@@ -1,0 +1,12 @@
+2016-02-08 18:43:09 : Expecting value: line 1 column 113 (char 112)
+2016-02-10 15:35:52 : 'dict' object has no attribute 'key'
+2016-02-10 15:38:19 : 'dict' object has no attribute 'key'
+2016-02-10 15:41:33 : 'dict' object has no attribute 'key'
+2016-02-10 15:45:49 : 'dict' object has no attribute 'key'
+2016-02-10 15:49:35 : dbapi > load_shop_history > 'dict' object has no attribute 'key' 
+2016-02-16 09:27:52 : [Errno 2] No such file or directory: '1001012345' 
+2016-02-16 09:41:54 : [Errno 2] No such file or directory: '1001012345' 
+2016-02-16 09:50:20 : dbapi > load_statement_list > Extra data: line 1 column 203 - line 1 column 405 (char 202 - 404) 
+2016-02-16 09:56:42 : dbapi > load_statement_list > Extra data: line 1 column 203 - line 1 column 405 (char 202 - 404) 
+2016-03-16 12:23:15 : dbapi > load_statement_list > Extra data: line 1 column 208 - line 2 column 1 (char 207 - 410) 
+2016-03-16 12:31:06 : dbapi > load_statement_list > Extra data: line 1 column 208 - line 2 column 1 (char 207 - 410) 
