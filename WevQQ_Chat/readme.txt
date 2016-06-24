@@ -1,4 +1,4 @@
-ReadMe:
+﻿ReadMe:
 仿WebQQ聊天室程序:
 
 功能：
@@ -17,5 +17,8 @@ ReadMe:
  2 user1   abcd_1234
  3 user2   abcd_1234
 
+技术工具：
+ Jquery  CSS  HTML  Django  BootStrap 
+使用插件： qqFace
 使用方法：
   查看群成员时点击人数信息查看。
