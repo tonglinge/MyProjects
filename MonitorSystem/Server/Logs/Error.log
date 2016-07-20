@@ -1,0 +1,12 @@
+2015-12-17 10:12:50 username
+2015-12-17 10:12:50 username
+2015-12-17 10:14:50 'module' object has no attribute 'index'
+2015-12-17 10:16:50 'module' object has no attribute 'index'
+2015-12-17 10:17:50 'module' object has no attribute 'index'
+2015-12-17 15:41:50 person model posted modify password failed!
+2015-12-17 15:41:50 person model posted modify password failed!
+2015-12-17 15:47:50 person model posted modify password failed!
+2015-12-17 15:50:50 person model posted modify password failed!
+2015-12-17 15:50:50 person model posted modify password failed!
+2015-12-17 15:53:50 person model posted modify password failed!unbound method save() must be called with Users instance as first argument (got nothing instead)
+2015-12-17 15:53:50 person model posted modify password failed!unbound method save() must be called with Users instance as first argument (got nothing instead)

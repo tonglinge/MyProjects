@@ -1,0 +1,10 @@
+
+WriteLog() takes exactly 2 arguments (1 given)
+
+unsupported operand type(s) for +: 'dict' and 'str'
+unsupported operand type(s) for +: 'dict' and 'str'
+unsupported operand type(s) for +: 'dict' and 'str'
+WriteLog() takes exactly 2 arguments (1 given)
+2015-12-17 13:37:43WriteLog() takes exactly 2 arguments (1 given)
+2015-12-17 13:42:47 
+2015-12-17 13:42:47 get configuration from server failed! load config model para null.

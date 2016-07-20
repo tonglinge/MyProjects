@@ -1,0 +1,45 @@
+# coding:utf-8
+
+from datetime import datetime
+from multiprocessing import process
+import Common
+
+
+def doprogress(model, ipaddr, strCurrtime, postdataUrl):
+    try:
+        result = Common.ExecuteModel(model, ipaddr, strCurrtime)
+        Common.CommitResultToServer(result, postdataUrl)
+    except Exception, e:
+        Common.WriteLog(e.message, "Error")
+
+
+if __name__ == "__main__":
+    ClientIpaddr = "192.168.3.1"
+    GetConfigUrl = "http://192.168.3.100/getpara/" + ClientIpaddr + "/"
+    Post_data_Url = "http://192.168.3.100/postdata/"
+    try:
+        Config = Common.GetConfigPara(GetConfigUrl)  # 获取服务器参数配置
+        Currt_ime = datetime.now()
+        ExecuteInfo = Common.FormatModelExecTime(Currt_ime, Config)  # 获取下一次执行各模块的具体时间
+        while True:
+            Currt_ime = datetime.now()
+            strCurrtime = Currt_ime.strftime("%Y-%m-%d %H:%M:%S")
+            print(Currt_ime)
+            for model in ExecuteInfo.keys():
+                if strCurrtime >= ExecuteInfo[model]:  # 如果到了某个模块的执行时间
+                    UpdateModelExecTime = Common.FormatModelExecTime(Currt_ime, Config)  # 获取所有模块的新的执行时间
+                    ExecuteInfo[model] = UpdateModelExecTime[model]  # '更新字典表中当前模块的执行时间为下次执行时间'
+                    try:
+                        # doProgress(model,"192.168.1.1",strCurrtime)
+                        p = process.Process(target=doprogress,
+                                            args=(model, ClientIpaddr, strCurrtime, Post_data_Url))  # 新建子进程执行信息采集
+                        p.start()
+                    except Exception, e:
+                        Common.WriteLog(e.message, "Error")
+            # 10分钟1次获取服务器监控配置参数，并按新的参数执行
+            if (int(Currt_ime.strftime("%M")) % 10) == 0:
+                Config = Common.GetConfigPara(GetConfigUrl)
+                ExecuteInfo = Common.FormatModelExecTime(Currt_ime, Config)
+
+    except Exception, e:
+        print(e.message)
