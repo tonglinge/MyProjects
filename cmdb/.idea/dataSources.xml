@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="648197993">
+    <data-source source="LOCAL" name="Sqlite (Xerial) - db2.sqlite3" uuid="6198840a-12b7-400a-a073-209d741c2244">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db2.sqlite3</jdbc-url>
+      <explain-plan-config>
+        <provider>com.intellij.database.plan.db2.Db2ExplainPlanProvider</provider>
+      </explain-plan-config>
+    </data-source>
+    <data-source source="LOCAL" name="Sqlite (Xerial) - db.sqlite3" uuid="02a0f6b0-518d-41ce-aceb-7afa2982c0ea">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>
