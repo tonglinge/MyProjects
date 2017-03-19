@@ -1,0 +1,102 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/monitor/config_host_groups.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/monitor/monitor"], function(monitor) {
+        monitor.triggerConfigHostGroups();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'monitor_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">主机分组管理</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content config_host_groups space-40" >
+        <div class="row hide div_create_group">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">添加主机组</h3>
+                    </div>
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="col-xs-2 control-label">组名</label>
+                                    <div class="col-xs-4">
+                                        <input name="group_name" type="text" class="form-control" placeholder="主机组名称">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-10 col-xs-offset-2">
+                                    <div class="col-xs-5">
+                                        <label for="" class="control-label">主机</label>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="col-xs-2 control-label">组</label>
+                                        <div class="col-xs-10">
+                                            <select name="group_id" id="group_id" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-10 col-xs-offset-2">
+                                    <div class="col-xs-5">
+                                        <select id="host_set" name="host_set" class="form-control" size="6" multiple="multiple"></select>
+                                    </div>
+                                    <div class="col-xs-1" style="text-align: center;padding-top: 25px">
+                                        <button id="move-left" type="button" ><span class="arrow_left mycaret" ></span></button>
+                                        <button id="move-right" type="button" style="margin-top: 10px" ><span class="arrow_right mycaret"></span></button>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <select id="host_id" name="host_id" class="form-control" size="6" multiple="multiple"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="button" id="del_group" class="btn btn-bg-red hide">删除</button>
+                            <div class="pull-right">
+                                <button type="button" id="create_group" class="btn btn-info">创建主机组</button>
+                                <button type="button" id="quit_create_group" class="btn btn-info">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row div_show_group">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3>主机组</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box btn-create-group"><i class="">创建主机群组</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>组名</th>
+                                    <th>主机成员</th>
+                                </tr>
+                            </thead>
+                            <tbody class="management_groups">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

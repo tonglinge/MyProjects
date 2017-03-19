@@ -1,0 +1,47 @@
+.box [type=text],.box select,.box-footer button {
+    border-radius: 12px;
+    outline-style: none!important;
+}
+
+
+.mycaret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+.arrow_left{
+    border-bottom:4px solid transparent;
+    border-top:4px solid transparent;
+    border-right:6px solid #1f2c33
+}
+.arrow_right{
+    border-bottom:4px solid transparent;
+    border-top:4px solid transparent;
+    border-left:6px solid #1f2c33
+}
+
+a.green {
+    color: #429e47;
+}
+
+a.link {
+    color: #0275b8;
+}
+
+button.btn-box {
+    padding: 5px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #0275b8;
+}
+button.btn-red {
+    color: #e33734
+}
+
+button.btn-bg-red {
+    color: #FFF;
+    background-color: #e33734;
+}

@@ -1,0 +1,22 @@
+.input-group-addon {
+    border: 0;
+    background-color: #fff;
+}
+
+.form-control {
+    border-radius: 4px!important;
+}
+
+
+.search-btn{
+    text-align: center;
+}
+.search-btn button{
+    width: 100px;
+    height: 30px;
+    background-color: #00c0ef;
+    font-weight: bolder;
+    border-radius: 12px;
+    border-style: none!important;
+    outline-style: none!important;
+}

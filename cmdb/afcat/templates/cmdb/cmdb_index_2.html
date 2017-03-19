@@ -1,0 +1,146 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/cmdb/cmdb_index.css" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+    cmdb.triggerNewIndex()
+    });
+{% endblock %}
+
+{% block content-header %}
+    <h1>设备资源</h1>
+{% endblock %}
+{% block content %}
+    <section class="content index-app">
+        <div class="row">
+            <!-- 业务数量 -->
+            <div class="col-md-4 col-xs-12">
+                <div class="small-box c-bg2 cmdb-title">
+                    <div class="div-img fl"><span class="info-box-icon bg-aqua"><i class="fa fa-server"></i></span></div>
+                    <div class="div-text fl">
+                        <p>服务器数</p>
+                        <h3 class="cmdb-count"  id="server-count"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="small-box c-bg1 cmdb-title">
+                    <div class="div-img fl"><span class="info-box-icon bg-aqua"><i class="fa fa-sitemap"></i></span></div>
+                    <div class="div-text fl">
+                        <p>网络设备</p>
+                        <h3 class="cmdb-count" id="equipment-count"></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div class="small-box c-bg3 cmdb-title">
+                    <div class="div-img fl"><span class="today-icon icon2  info-box-icon"><i class="fa fa-television"></i></span></div>
+                    <div class="div-text fl">
+                        <p>主机数量</p>
+                        <h3 class="cmdb-count"  id="host-count"></h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /当前余额 -->
+        </div>
+
+        <div class="row" style="padding-top: 15px;">
+            <div class="col-lg-8 col-md-12 col-sm-12"></div>
+            <div class="col-lg-4 col-md-12 col-sm-12"></div>
+            <div class="col-md-8 col-sm-12">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">设备统计</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <li data-target="#carousel-example-generic" data-slide-to="0"  class="active" style="background:#00ccff;"></li>
+                          <li data-target="#carousel-example-generic" data-slide-to="1" id="haha" class=""  style="background:#00ccff;"></li>
+                          <li data-target="#carousel-example-generic" data-slide-to="2" class=""  style="background:#00ccff;"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                          <div class="item active">
+                            <div class="col-md-6 col-sm-12 chart-box">
+                              <div id="server-chart-contain" class="chart chart-info" style="height:490px;"></div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 chart-box">
+                              <div id="server-count-chart-contain" class="chart chart-info" style="height:490px;"></div>
+                            </div>
+                            <div class="carousel-caption">
+
+                            </div>
+                          </div>
+
+                          <div class="item">
+                              <div class="col-md-6 col-sm-12 chart-box">
+                                  <div id="equipment-chart-contain" class="chart chart-info" style="height:490px"></div>
+                              </div>
+                              <div class="col-md-6 col-sm-12 chart-box">
+                                  <div id="equipment-count-chart-contain" class="chart chart-info" style="height:490px"></div>
+                              </div>
+                            <div class="carousel-caption">
+
+                            </div>
+                          </div>
+
+                          <div class="item">
+                              <div class="col-md-6 col-sm-12 chart-box">
+                                  <div id="host-chart-contain" class="chart chart-info" style="height:490px;"></div>
+                              </div>
+                              <div class="col-md-6 col-sm-12 chart-box">
+                                  <div id="host-item-chart-contain" class="chart chart-info" style="height:490px;"></div>
+                              </div>
+
+                            <div class="carousel-caption">
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                  <!-- /.box -->
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <!-- 操作日志 -->
+                <ul class="c-host-opt">
+                    <div class="page-header">
+                        <h4>操作日志
+                            <small><a href="{% url 'cmdb_templates' 'cmdb_oplog' %}">查看全部</a></small>
+                        </h4>
+                    </div>
+                    <div id="opt—box" class="opt-box " style="height: 464px; position: relative; overflow-y: auto;">
+                        <div id="mCSB_9" tabindex="0">
+                            <div id="mCSB_9_container" style="position:relative; top:0; left:0;" dir="ltr">
+                                <ul class="king-timeline-simple" id="opration-log">
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="mCSB_9_scrollbar_vertical"
+                             class="mCSB_scrollTools mCSB_9_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical"
+                             style="display: block;">
+                            <div class="mCSB_draggerContainer">
+                                <div id="mCSB_9_dragger_vertical" class="mCSB_dragger"
+                                     style="position: absolute; min-height: 50px; display: block; height: 307px; max-height: 430px;"
+                                     oncontextmenu="return false;">
+                                    <div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
+                                </div>
+                                <div class="mCSB_draggerRail"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /操作记录 -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

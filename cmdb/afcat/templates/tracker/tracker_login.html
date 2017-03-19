@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{% block title %}Login{% endblock %}
+{% block script %}
+    <script>
+        require(["libs/domReady/2.0.1/domReady"], function (domReady) {
+            domReady(function () {
+                require(["jquery"], function ($) {
+{#                    var frm = document.createElement("iframe");#}
+{#                    frm.width = "0";#}
+{#                    frm.height = "0";#}
+{#                    frm.src = "http://{{ monitor_server }}/zabbix/index.php?sid=ce81bfc8ada37191&form_refresh=1&name=Admin&password=zabbix&autologin=1&enter=Sign+in";#}
+{#                    document.body.appendChild(frm);#}
+{#                    window.opener=null;window.open('','_self');window.close();#}
+                });
+            });
+        });
+    </script>
+{% endblock %}
+{% block body %}
+    <iframe src="http://{{ monitor_server }}/zabbix/index.php?sid=ce81bfc8ada37191&form_refresh=1&name=Admin&password=zabbix&autologin=1&enter=Sign+in"></iframe>
+{% endblock %}

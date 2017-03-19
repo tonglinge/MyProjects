@@ -1,0 +1,696 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/tracker/index.css">
+    <link rel="stylesheet" href="/static/js/libs/highcharts/5.0.2/code/css/highcharts.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/tracker/tracker"], function(tracker) {
+        tracker.triggerIndex();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'tracker_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-20 tracker_index" >
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-inline">
+                    <li>总数： <i>20000</i></li>
+                    <li> 监控： <i>20000</i></li>
+                    <li> 未监控： <i>20000</i></li>
+                    <li> 监控项： <i>20000</i></li>
+                    <li> 未生效： <i>20000</i></li>
+                </ul>
+                <div class="box box-info">
+                    <div class="box-body">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#system" role="tab" data-toggle="tab">系统</a></li>
+                            <li role="presentation"><a href="#physics_host" role="tab" data-toggle="tab">物理机</a></li>
+                            <li role="presentation"><a href="#visual_host" role="tab" data-toggle="tab">虚拟机</a></li>
+                            <li role="presentation"><a href="#network" role="tab" data-toggle="tab">网络</a></li>
+                            <li role="presentation"><a href="#storage" role="tab" data-toggle="tab">存储</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="system">
+                                <ul class="list-unstyled">
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a href="/tracker/host/11111/detail/"><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a  href="/tracker/host/22222/detail/"><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a href=""><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a href=""><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a href=""><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a href=""><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a href=""><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="physics_host">
+                                <ul class="list-unstyled">
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="visual_host">
+                                <ul class="list-unstyled">
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="network">
+                                <ul class="list-unstyled">
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="storage">
+                                <ul class="list-unstyled">
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                    <li class="col-xs-6 col-lg-2 col-md-3 col-sm-4 text-center"><a><i class="fa fa-laptop fa-2x" aria-hidden="true"></i><div style="overflow: hidden;">172.16.0.12-mysql-master-beijing-yalian-shijihulian</div></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">未处理的事件</h4>
+                        <div id="container" style="min-width:800px;height:400px"></div>
+                    </div>
+                    <div class="box-body">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#system_events" role="tab" data-toggle="tab">系统</a></li>
+                            <li role="presentation"><a href="#physics_host_events" role="tab" data-toggle="tab">物理机</a></li>
+                            <li role="presentation"><a href="#visual_host_events" role="tab" data-toggle="tab">虚拟机</a></li>
+                            <li role="presentation"><a href="#network_events" role="tab" data-toggle="tab">网络</a></li>
+                            <li role="presentation"><a href="#storage_events" role="tab" data-toggle="tab">存储</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="system_events">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>主机名</th>
+                                            <th>IP</th>
+                                            <th>应用名</th>
+                                            <th>级别</th>
+                                            <th>类型</th>
+                                            <th>消息</th>
+                                            <th>确认</th>
+                                            <th>历史</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="physics_host_events">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>主机名</th>
+                                            <th>IP</th>
+                                            <th>应用名</th>
+                                            <th>级别</th>
+                                            <th>类型</th>
+                                            <th>消息</th>
+                                            <th>确认</th>
+                                            <th>历史</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-slave</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-slave</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-slave</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-slave</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="visual_host_events">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>主机名</th>
+                                            <th>IP</th>
+                                            <th>应用名</th>
+                                            <th>级别</th>
+                                            <th>类型</th>
+                                            <th>消息</th>
+                                            <th>确认</th>
+                                            <th>历史</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-cluster</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-cluster</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-cluster</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-cluster</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="network_events">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>主机名</th>
+                                            <th>IP</th>
+                                            <th>应用名</th>
+                                            <th>级别</th>
+                                            <th>类型</th>
+                                            <th>消息</th>
+                                            <th>确认</th>
+                                            <th>历史</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="storage_events">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>时间</th>
+                                            <th>主机名</th>
+                                            <th>IP</th>
+                                            <th>应用名</th>
+                                            <th>级别</th>
+                                            <th>类型</th>
+                                            <th>消息</th>
+                                            <th>确认</th>
+                                            <th>历史</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2016-11-22 14:17:00</td>
+                                            <td>mysql-master</td>
+                                            <td>172.16.0.128</td>
+                                            <td>数据库</td>
+                                            <td>严重</td>
+                                            <td>数据</td>
+                                            <td>mysql can't connection</td>
+                                            <td>否</td>
+                                            <td>历史数据</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header with-border"><h4 class="box-title">最新告警事件Top20</h4></div>
+                    <div class="box-body">
+                        <table class="table table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>主机名</th>
+                                    <th>IP</th>
+                                    <th>应用名</th>
+                                    <th>级别</th>
+                                    <th>类型</th>
+                                    <th>消息</th>
+                                    <th>确认</th>
+                                    <th>历史</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/monitor/host-groups.css">
+    <link rel="stylesheet" href="/static/js/afcat/require-module/afcat/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/monitor/monitor"], function(monitor) {
+    });
+{% endblock %}
+{% block content-header %}
+
+    <ol class="breadcrumb" style="z-index: 200000000">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'monitor_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">权限策略</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40">
+    页面设计中 。。。
+    </section>
+{% endblock %}

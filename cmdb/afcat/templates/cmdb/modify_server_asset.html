@@ -1,0 +1,24 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/cmdb/modify_server_asset.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+        cmdb.triggerModifyServerAsset()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-eye"></i> 服务器设备</a></li>
+        <li><i class="fa fa-eye"></i>更新</li>
+    </ol>
+{% endblock %}
+{% block content %}
+ <section class="content space-40 server-asset-app">
+    <div class="col-xs-12 server-asset">
+    </div>
+ </section>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'layout/base.html' %}
+{% block extra_js %}
+    //iframe高度自适应
+    function autoHeight(){
+        var iframe = document.getElementById("frame");
+        if(iframe.Document){//ie自有属性
+            iframe.style.height = iframe.Document.documentElement.scrollHeight;
+        }else if(iframe.contentDocument){//ie,firefox,chrome,opera,safari
+            iframe.height = iframe.contentDocument.body.offsetHeight ;
+        }
+    }
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'monitor_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">模板</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40">
+        <iframe frameborder="0" id="frame" scrolling="no" width="100%" onload="autoHeight()" src="http://{{ monitor_server }}/zabbix/templates.php?ddreset=1"></iframe>
+    </section>
+{% endblock %}

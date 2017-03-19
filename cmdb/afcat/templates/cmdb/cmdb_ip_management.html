@@ -1,0 +1,149 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="/static/js/libs/jstree/css/style.min.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+        cmdb.triggerIPManagement()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><i class="fa fa-eye"></i>IP配置</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 ip-config-app">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <button class="btn btn-primary btn-block margin-bottom">IP地址管理</button>
+                <div class="box box-solid">
+
+                    <div class="box-body" id="ip-treeview" style="overflow-x: auto;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <div class="well well-sm">对IP资源的统一管理</div>
+                        <div id="datacenter-title"></div>
+                    </div>
+                    <div class="box-body" >
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <ul class="nav nav-tabs" id="ip-manage-tabs">
+                                    <li class="active" id="li-subnet"><a href="#tab_0" data-toggle="tab" aria-expanded="true">网络规划</a></li>
+                                    <li id="li-ip"><a href="#tab_1" data-toggle="tab" aria-expanded="false">IP管理</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_0">
+                                        <button class="btn btn-primary input-sm pull-left" id="create-subnet" style="margin-top:20px;margin-bottom:5px">添加</button>
+{#                                        <button type="button" class="btn btn-primary input-sm pull-left" id="btn-export-ip" style="margin-top:20px;margin-left: 5px"><i class="fa fa-download"></i>导出子网</button>#}
+
+                                        <div class="box-tools pull-right" style="padding-top:20px;margin-bottom:5px">
+                                            <form role="form" class="form-inline" id="search-subnet-form">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input type="text" name="content" id="subnet-value" class="form-control input-sm" placeholder="网络关键字">
+                                                        <div class="input-group-btn" style="width: 0!important;">
+                                                            <button type="button" class="btn btn-default input-sm" id="search-subnet"><i class="fa fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <table class="table table-bordered table-hover dataTable">
+                                            <thead>
+                                                <th>IP地址</th>
+                                                <th>子网总数</th>
+                                                <th>已分配数</th>
+                                                <th>数据中心</th>
+                                                <th>网络区域</th>
+                                                <th>备注</th>
+                                                <th>操作</th>
+                                            </thead>
+                                            <tbody id="ip-config">
+
+                                            </tbody>
+                                        </table>
+                                        <div class="box-footer no-padding" id="subnet-pagination">
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_1">
+                                        <button type="button" class="btn btn-primary input-sm pull-left" id="btn-export-ip" style="margin-top:20px;margin-bottom:5px"><i class="fa fa-download"></i>导出</button>
+                                        <div class="box-tools pull-right" style="margin-top:20px;margin-bottom:5px">
+                                            <form role="form" class="form-inline" id="search-ip-form" action="/cmdb/exportexcel/">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+
+                                                    </div>
+                                                    <div class="input-group">
+
+                                                        <input type="text" name="conditions" id="ip-value" class="form-control input-sm" placeholder="IP">
+                                                        <div class="input-group-btn" style="width: 0!important;">
+                                                            <button type="button" class="btn btn-default input-sm" id="search-ip"><i class="fa fa-search"></i></button>
+                                                        </div>
+                                                        <div class="input-group-btn" style="width: 0!important;">
+                                                            <input name="model"  value="ipmanage" hidden>
+                                                        </div>
+                                                        <div class="input-group-btn" style="width: 0!important;">
+                                                            <input name="file_type"  value="ipallocate" hidden>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <table class="table table-bordered table-hover dataTable">
+                                            <thead>
+                                                <th>序号</th>
+                                                <th>IP地址</th>
+                                                <th>IP地址段</th>
+                                                <th>
+                                                    <div class="dropdown">
+                                                      <span  id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onmouseover="this.style.cursor='pointer'">
+                                                        分配状态
+                                                        <span class="caret"></span>
+                                                      </span>
+                                                      <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                          <li><label><input name="ip-status" type="radio" class="ip-status" value="" checked>所有</label></li>
+                                                          <li><label><input name="ip-status" type="radio" class="ip-status" value="1">未分配</label></li>
+                                                          <li><label><input name="ip-status" type="radio" class="ip-status" value="2" />已分配</label></li>
+                                                          <li><label><input name="ip-status" type="radio" class="ip-status" value="3" />已使用</label></li>
+                                                          <li><label><input name="ip-status" type="radio" class="ip-status" value="4" />待回收</label></li>
+                                                      </ul>
+                                                    </div>
+                                                </th>
+                                                <th>VLAN</th>
+                                                <th>分配人</th>
+                                                <th>分配时间</th>
+                                                <th>分配系统/设备</th>
+                                                <th>所属设备</th>
+                                                <th>备注</th>
+                                                <th>操作</th>
+                                            </thead>
+                                            <tbody id="ip-detail">
+
+                                            </tbody>
+                                        </table>
+                                        <div class="box-footer no-padding" id="ip-pagination">
+
+                                        </div>
+
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="" id="modify-ip-config"></div>
+                    <div class="" id="partition-subnet"></div>
+                    <div class="" id="allocate-ip"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

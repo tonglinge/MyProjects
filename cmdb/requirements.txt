@@ -1,0 +1,6 @@
+Django>=1.9
+PyMySQL>=0.7.6
+Xlsxwriter==0.9.3
+django-guardian==1.4.6
+Pillow>=3.4.1
+xlrd>=1.0.0

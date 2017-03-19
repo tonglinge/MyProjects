@@ -1,0 +1,69 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/monitor/host-info.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-switch/3.3.2/dist/css/bootstrap3/bootstrap-switch.min.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.css">
+    <link rel="stylesheet" href="/static/js/libs/highcharts/5.0.2/code/css/highcharts.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/monitor/monitor"], function(monitor) {
+        monitor.triggerHostInfo();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'monitor_index' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'host_groups' %}"><i class="fa fa-eye"></i> 主机组</a></li>
+        <li class="active">主机信息</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 host-info">
+        <div class="row search-record">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h5>主机信息</h5>
+                    </div>
+                    <div class="box-body">
+                        <div class="row host-base-status">
+                            <ul class="col-md-12 col-sm-12">
+                                <li class="col-md-4 col-sm-4"><b>主机名: </b> {{ hostname }}</li>
+                                <li class="col-md-4 col-sm-4"><b>主机组: </b> {{ group|first }}</li>
+                                <li class="col-md-4 col-sm-4"><b>主机地址: </b> {{ ip_address|first }}</li>
+                                <li class="col-md-4 col-sm-4"><b>状态: </b> {{ status }}</li>
+                                <li class="col-md-4 col-sm-4"><b>当前状态发生时间: </b> {{ date }}</li>
+                                <li class="col-md-4 col-sm-4"><b>确认: </b> {{ confirm }}</li>
+                                <li class="col-md-12 col-sm-12"><span class="fa fa-exclamation-circle" style="color: #ff0000"></span><b>状态(故障)信息: </b> {{ detail }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row search-record">
+            <div class="col-md-4">
+                <div class="box box-info">
+                    <div class="box-body">
+                        <div class="add-item-view">
+                            <div class="col-xs-12">
+                                <div class="btn-group col-xs-12">
+                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                        添加显示图形项 <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu data-graph-list container-bg" role="menu"></ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row graph-show-area"></div>
+
+    </section>
+
+{% endblock %}

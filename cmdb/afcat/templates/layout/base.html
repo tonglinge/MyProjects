@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+        <title>{% block title %}Monitor{% endblock %}</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta name="renderer" content="webkit">
+        <link rel="shortcut icon" href="/static/img/favicon.ico">
+        <link rel="stylesheet" href="/static/js/libs/bootstrap/3.3.7/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/js/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/css/layout/afca.css">
+        <link rel="stylesheet" href="/static/css/layout/_all-skins.min.css">
+        <link rel="stylesheet" href="/static/js/libs/sweet_alert/1.1.3/dist/sweetalert.css">
+        {% block extra_css %}{% endblock %}
+        <script src="/static/js/libs/html5shiv/3.7.3/dist/html5shiv.min.js"></script>
+        <script src="/static/js/libs/response/1.4.2/dest/respond.min.js"></script>
+        <script src="/static/js/libs/require/2.3.2/require.js" data-main="/static/js/require-config"  ></script>
+        {% block script %}
+            <script>
+                require(["libs/domReady/2.0.1/domReady"], function (domReady) {
+                    domReady(function () {
+                        require(["jquery","common", "app", "swal"], function ($,common) {
+                            common.resizeElement(".loading_img",".content");
+                            function getCookie(name) {
+                                var cookieValue = null;
+                                if(document.cookie && document.cookie !== ''){
+                                    var cookie = document.cookie.split(';');
+                                    for(var i = 0; i < cookie.length; i++){
+                                        var cookie = $.trim(cookie[i]);
+                                        if (cookie.substring(0, name.length + 1) ===(name + '=')){
+                                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                            break;
+                                        }
+                                    }
+                                }
+                                return cookieValue;
+                            }
+                            var csrftoken = getCookie('csrftoken');
+                            function csrfSafeMethod(method) {
+                                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                            }
+                            $.ajaxSetup({
+                                beforeSend: function (xhr, settings) {
+                                    if(!csrfSafeMethod(settings.type) && !this.crossDomain){
+                                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                                    }
+                                }
+                            });
+                        });
+                        require(["src/cmdb/cmdb"], function(cmdb) {
+                            cmdb.triggerChangeCust();
+                        });
+                        {% block extra_js %}
+
+                        {% endblock %}
+                    });
+                });
+            </script>
+        {% endblock %}
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini {% block body_css %}{% endblock %}" style="font-size: 12px">
+        {% csrf_token %}
+        {% block body %}
+            <div class="wrapper">
+                <header class="main-header">
+                    <a href="{% url 'cmdb_index' %}" class="logo">
+                        <span class="logo-mini"><img src="/static/img/log.png" width="128"></span>
+                        <span class="logo-lg"><img src="/static/img/log.png" width="122" style="margin-bottom: 3px"></span>
+                    </a>
+                    <nav class="navbar navbar-static-top">
+                        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle navigation</span>
+                        </a>
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown user user-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="/static/img/account/{% if request.user.account.avatar %}{{ request.user.account.avatar }}{% else %}default.jpg{% endif %}" class="user-image" alt="User Image">
+                                        <span class="hidden-xs">{{ request.user|capfirst }}</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="user-header">
+                                            <img src="/static/img/account/{% if request.user.account.avatar %}{{ request.user.account.avatar }}{% else %}default.jpg{% endif %}" class="img-circle" alt="User Image">
+                                            <p>
+                                                您好! {{ request.user|capfirst }}
+                                                <small id="curr-cust">当前操作客户：{{ request.session.custname }}</small>
+                                            </p>
+                                        </li>
+                                        <li class="user-footer">
+                                            <div class="pull-left">
+                                                <a href="{% url 'profile' %}" class="btn btn-default btn-flat">个人中心</a>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a href="{% url 'logout' %}" class="btn btn-default btn-flat">退出</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+                <aside class="main-sidebar">
+                    <section class="sidebar">
+                        {% block user_panel %}
+                            <div class="user-panel">
+                                <div class="pull-left image">
+                                    <img src="/static/img/account/{% if request.user.account.avatar %}{{ request.user.account.avatar }} {% else %}default.jpg{% endif %}" class="img-circle" alt="User Image">
+                                </div>
+                                <div class="pull-left info">
+                                    <p>{{ request.user|capfirst }}</p>
+                                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                                </div>
+                            </div>
+                        {% endblock %}
+                        {% comment %}
+                            <form action="#" method="get" class="sidebar-form">
+                                <div class="input-group">
+                                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        {% endcomment %}
+                        <ul class="sidebar-menu">
+                            <li class="active">
+                                <a href="#">
+                                    <i class="fa fa-dashboard"></i> <span>总览</span>
+                                </a>
+                            </li>
+
+                        {% if "m_001_0" in main_menu %}
+                            <li class="treeview {{ computing }}">
+                                <a href="#">
+                                    <i class="fa fa-server"></i>
+                                    <span>计算</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i>主机</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 镜像</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_002_0" in main_menu %}
+                            <li class="treeview {{ network }}">
+                                <a href="#">
+                                    <i class="fa fa-cloud"></i>
+                                    <span>网络</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 私有网络</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 基础网络</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> LB</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_003_0" in main_menu %}
+                            <li class="treeview {{ storage }}">
+                                <a href="#">
+                                    <i class="fa fa-database"></i>
+                                    <span>存储</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 分布式存储</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> NAS</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> FC SAN</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_004_0" in main_menu %}
+                            <li class="treeview {{ security }}">
+                                <a href="#">
+                                    <i class="fa fa-bug"></i>
+                                    <span>安全</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 漏扫</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 审计</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> VPN</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 防火墙</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> VAF</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> IPS.DDOS</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 密钥</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_005_0" in main_menu %}
+                            <li class="treeview {{ container }}">
+                                <a href="#">
+                                    <i class="fa fa-hourglass"></i> <span>容器</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 应用服务</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 工作任务</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_006_2" in main_menu %}
+                            <li class="treeview {{ monitor }}">
+                                <a href="#">
+                                    <i class="fa fa-eye"></i> <span>废弃监控</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu menu-open">
+                                    <li><a href="{% url 'monitor_index' %}"><i class="fa fa-circle-o"></i> 总览</a></li>
+                                    <li class="treeview {{ monitor_group }}">
+                                        <a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 监控组
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu menu-open" id="monitor_groups_menu">
+                                            <li><a href="{% url 'host_groups' %}"><i class="fa fa-circle-o"></i> 所有主机</a></li>
+                                            {% for group in groups_menu %}
+                                            <li><a href="{% url 'host_groups_detail' group.group_id %}" data-group-menu-id="{{ group.group_id }}"><i class="fa fa-circle-o"></i> {{ group.group_name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'event_trigger' %}"><i class="fa fa-circle-o"></i> 告警事件</a></li>
+                                    <li class="treeview {{ monitor_report }}">
+                                        <a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 报表
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu menu-open">
+                                            <li><a href="{% url 'monitor_report_default' %}"><i class="fa fa-circle-o"></i> 默认</a></li>
+                                            <li><a href="{% url 'monitor_report_custom' %}"><i class="fa fa-circle-o"></i> 自定义</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="treeview {{ monitor_config }}">
+                                        <a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 配置管理
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu menu-open">
+                                            <li><a href="{% url 'monitor_config_host_groups' %}"><i class="fa fa-circle-o"></i> 主机群组</a></li>
+                                            <li><a href="{% url 'monitor_config_template' %}"><i class="fa fa-circle-o"></i> 模版</a></li>
+                                            <li><a href="{% url 'monitor_config_host_management' %}"><i class="fa fa-circle-o"></i> 主机管理</a></li>
+                                            <li><a href="{% url 'monitor_config_host' %}"><i class="fa fa-circle-o"></i> 主机</a></li>
+                                            <li class="treeview {{ monitor_action }}">
+                                                <a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 操作
+                                                    <span class="pull-right-container">
+                                                        <i class="fa fa-angle-left pull-right"></i>
+                                                    </span>
+                                                </a>
+                                                <ul class="treeview-menu menu-open">
+                                                    <li><a href="{% url 'monitor_config_media' %}"><i class="fa fa-circle-o"></i> 媒介</a></li>
+                                                    <li><a href="{% url 'monitor_config_behaviour' %}"><i class="fa fa-circle-o"></i> 动作</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'monitor_lasted_data' %}"><i class="fa fa-circle-o"></i> 最新数据</a></li>
+                                    <li><a href="{% url 'monitor_queue' %}"><i class="fa fa-circle-o"></i> 队列</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                        {% if "m_006_0" in main_menu %}
+                            <li class="treeview {{ tracker }}">
+                                <a href="#">
+                                    <i class="fa fa-eye"></i> <span>监控</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu menu-open">
+                                    <li><a href="{% url 'tracker_index' %}"><i class="fa fa-circle-o"></i> 总览</a></li>
+                                    <li><a href="{% url 'tracker_application_view' %}"><i class="fa fa-circle-o"></i> 应用</a></li>
+                                    <li><a href="{% url 'tracker_network_view' %}"><i class="fa fa-circle-o"></i> 网络</a></li>
+                                    <li><a href="{% url 'tracker_host_events' %}"><i class="fa fa-circle-o"></i> 告警事件</a></li>
+                                    <li><a href="{% url 'tracker_host_view' %}"><i class="fa fa-circle-o"></i> 主机</a></li>
+                                    <li><a href="{% url 'tracker_report_view' %}"><i class="fa fa-circle-o"></i> 报表</a></li>
+                                    <li class="treeview {{ tracker_management }}">
+                                        <a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 配置管理
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu menu-open">
+                                            <li><a href="{% url 'tracker_management_groups' %}"><i class="fa fa-circle-o"></i> 组管理</a></li>
+                                            <li><a href="{% url 'tracker_management_hosts' %}"><i class="fa fa-circle-o"></i> 主机管理</a></li>
+                                            <li><a href="{% url 'tracker_management_templates' %}"><i class="fa fa-circle-o"></i> 模版管理</a></li>
+                                            <li><a href="{% url 'tracker_management_settings' %}"><i class="fa fa-circle-o"></i> 设置</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_007_0" in main_menu %}
+                            <li class="treeview {{ cmdb }}">
+                                <a href="#">
+                                    <i class="fa fa-book"></i> <span>CMDB</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/"><i class="fa  fa-bar-chart-o"></i> 总览</a></li>
+                                    <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-server"></i> 服务器设备</a></li>
+                                    <li><a href="{% url 'cmdb_templates' 'equipment' %}"><i class="fa fa-tasks"></i> 网络设备</a></li>
+                                    <li><a href="{% url 'cmdb_templates' 'server_host' %}"><i class="fa fa-desktop"></i> 主机管理</a></li>
+                                    <li><a href="{% url 'admin_index' %}"><i class="fa fa-table"></i> 基表维护</a></li>
+                                    <li class="treeview {{ ipconfig }}">
+                                        <a href="#">
+                                            <i class="fa fa-sitemap"></i> <span>IP管理</span>
+                                            <span class="pull-right-container">
+                                              <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a href="{% url 'cmdb_templates' 'cmdb_ip_management' %}"><i class="fa fa-circle-o"></i> IP地址规划</a></li>
+                                            <li><a href="{% url 'cmdb_templates' 'cmdb_balance_mapping' %}"><i class="fa fa-circle-o"></i> F5地址映射</a></li>
+                                        </ul>
+                                    </li>
+                                    {% if "m_007_1" in main_menu %}
+                                    <li class="treeview {{ sysconfig }}">
+                                        <a href="#">
+                                            <i class="fa  fa-gear"></i> <span>系统管理</span>
+                                            <span class="pull-right-container">
+                                              <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a href="{% url 'cmdb_sysconfig_dbmanage' %}"><i class="fa fa-database"></i> 数据管理</a></li>
+                                            <li><a href="{% url 'cmdb_templates' 'sysconfig_import' %}"><i class="fa fa-file-excel-o"></i> 导入Excel</a></li>
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                                    <li class="treeview">
+                                        <a href="{% url 'cmdb_templates' 'cmdb_oplog' %}">
+                                            <i class="fa fa-file-text"></i> <span>操作日志</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_008_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-spinner"></i> <span>自动化运维</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 自动化系统上线</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 自动化巡检</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 自动化发布</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> NCM</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_009_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-cogs"></i> <span>服务编排</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 弹性可伸缩</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 资源编排.业务关联</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 服务组件镜像</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_010_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-heartbeat"></i> <span>高可用</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 集群.双中心</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_011_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-bar-chart"></i> <span>业务性能分析</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 业务瓶颈</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_012_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-smile-o"></i> <span>微服务</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_013_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-globe"></i> <span>大数据</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 收集</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 存储</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 分析</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_014_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-wpforms"></i> <span>日志</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 收集</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 存储</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 分析</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_015_0" in main_menu %}
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <i class="fa fa-envelope"></i> <span>邮件</span>
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right bg-yellow">12</small>
+                                        <small class="label pull-right bg-green">16</small>
+                                        <small class="label pull-right bg-red">5</small>
+                                    </span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_016_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-question-circle"></i> <span>知识库</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_017_0" in main_menu %}
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-cart-plus"></i> <span>应用市场</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 应用发布</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if "m_018_0" in main_menu %}
+                            <li class="treeview {{ account }}">
+                                <a href="#">
+                                    <i class="fa fa-user"></i> <span>帐号管理</span>
+                                    <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{% url 'user_management' %}"><i class="fa fa-circle-o"></i> 用户管理</a></li>
+                                    <li><a href="{% url 'group_management' %}"><i class="fa fa-circle-o"></i> 组管理</a></li>
+
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        </ul>
+                    </section>
+                </aside>
+                <div class="content-wrapper">
+                    <section class="content-header">
+                        {% block content-header %}
+                            <h1>
+                                Dashboard
+                                <small>Version 2.0</small>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                                <li class="active">Dashboard</li>
+                            </ol>
+                        {% endblock %}
+                    </section>
+                    {% block loading %}
+                        <div id="loading">
+                            <div class="loading_bg"></div>
+                            <div class="loading_img">
+                                <img src="/static/img/layout/loading.gif">
+                            </div>
+                        </div>
+                    {% endblock %}
+                    {% block content %}{% endblock %}
+                </div>
+                {% block footer %}
+                    <footer class="main-footer">
+                        <div class="pull-right hidden-xs">
+                            <b>Version</b> 2.0
+                        </div>
+                        <strong>Copyright &copy; 2013-2016 <a href="http://www.afcat.com.cn/" target="_blank">亚联（天津）信息技术有限责任公司</a>.</strong> All rights reserved.
+                    </footer>
+                {% endblock %}
+                <aside class="control-sidebar control-sidebar-dark">
+                    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                        <li class="active"><a href="#control-sidebar-home-tab " data-toggle="tab" aria-expanded="true"><i class="fa fa-home"></i></a></li>
+                        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                    </ul>
+                    <div class="tab-content div-custinfo-content">
+                        <div class="tab-pane active" id="control-sidebar-home-tab">
+                            <h4 class="control-sidebar-heading ">切换客户</h4>
+                            <ul class="control-sidebar-menu list-unstyled">
+                            {% for cust in manage_cust %}
+                              <li class="li-custinfo {% if request.session.custid == cust.custid %}isactive{% endif %}">
+                                  <a href="javascript:void(0)" class="a-custinfo" cid="{{ cust.custid }}">
+                                    <h4 class="h-custinfo menu-icon fa {% if request.session.custid == cust.custid %} fa-hand-o-right{% else %}fa-user{% endif %}"> &nbsp;{{ cust.custalias }}</h4>
+                                  </a>
+                              </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="tab-pane" id="control-sidebar-settings-tab"></div>
+                    </div>
+                </aside>
+                <div class="control-sidebar-bg"></div>
+            </div>
+        {% endblock %}
+
+    </body>
+</html>

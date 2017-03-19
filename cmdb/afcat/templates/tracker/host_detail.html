@@ -1,0 +1,213 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/tracker/host.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-switch/3.3.2/dist/css/bootstrap3/bootstrap-switch.min.css">
+    <link rel="stylesheet" href="/static/js/libs/highcharts/5.0.2/code/css/highcharts.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/tracker/tracker"], function(tracker) {
+        tracker.triggerHost();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'tracker_host_view' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">主机详情</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 tracker_host" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-body">
+                        <ul class="list-inline">
+                            <li class="col-md-3"><b>主机信息: </b>飒飒的说三道四</li>
+                            <li class="col-md-3"><b>IP: </b>192.168.100.100</li>
+                            <li class="col-md-3"><b>OS 类型: </b>UNIX</li>
+                            <li class="col-md-3"><b>状态: </b>正常</li>
+                            <li class="col-md-3"><b>运行时间: </b>72:59</li>
+                            <li class="col-md-3"><b>最后取值时间: </b>2016-11-23 16：27：11</li>
+                            <li class="col-md-12"><b>主机信息: </b>飒飒的说三道四</li>
+                            <li class="col-md-3"><b>告警开关: </b><input name="switch_status" type="checkbox" checked data-on-color="success" data-off-color="warning"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">CPU</h3>
+                        <div class="box-tools pull-right">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1H" data-off-text="1H" checked>
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1D" data-off-text="1D">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1W" data-off-text="1W">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1M" data-off-text="1M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="3M" data-off-text="3M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="6M" data-off-text="6M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1Y" data-off-text="1Y">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="2Y" data-off-text="2Y">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="cpu" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    </div>
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">内存</h3>
+                        <div class="box-tools pull-right">
+                            <input type="radio" name="mem" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1H" data-off-text="1H" checked>
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1D" data-off-text="1D">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1W" data-off-text="1W">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1M" data-off-text="1M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="3M" data-off-text="3M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="6M" data-off-text="6M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1Y" data-off-text="1Y">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="2Y" data-off-text="2Y">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="mem" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    </div>
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">磁盘</h3>
+                        <div class="box-tools pull-right">
+                            <input type="radio" name="disk" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1H" data-off-text="1H" checked>
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1D" data-off-text="1D">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1W" data-off-text="1W">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1M" data-off-text="1M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="3M" data-off-text="3M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="6M" data-off-text="6M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1Y" data-off-text="1Y">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="2Y" data-off-text="2Y">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="disk" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    </div>
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">网络</h3>
+                        <div class="box-tools pull-right">
+                            <input type="radio" name="network" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1H" data-off-text="1H" checked>
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1D" data-off-text="1D">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1W" data-off-text="1W">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1M" data-off-text="1M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="3M" data-off-text="3M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="6M" data-off-text="6M">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1Y" data-off-text="1Y">
+                            <input type="radio" name="cpu" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="2Y" data-off-text="2Y">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="network" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    </div>
+                </div>
+                <div class="box box-info">
+                    <div class="box-body">
+                        <table class="table table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>主机名</th>
+                                    <th>IP</th>
+                                    <th>应用名</th>
+                                    <th>级别</th>
+                                    <th>类型</th>
+                                    <th>消息</th>
+                                    <th>确认</th>
+                                    <th>历史</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

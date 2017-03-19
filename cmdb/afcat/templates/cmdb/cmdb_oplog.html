@@ -1,0 +1,78 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+    cmdb.triggerOperationLog()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'cmdb_index_2' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><i class="fa fa-eye"></i>操作日志</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-30 oplog-app">
+        <div class="row oplog">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-sm" id="log-refresh"><i class="fa fa-refresh"></i></button>
+                        </div>
+
+                        <div class="box-tools pull-right">
+                            <form role="form" class="form-inline" action="/cmdb/exportexcel/" id="search-form">
+                                <div class="form-group">
+                                    <div class="input-group pull-right">
+                                        <input type="text" name="content" id="search_value" style="width: 300px;"
+                                               class="form-control input-sm" placeholder="">
+                                        <div class="input-group-btn" style="width: 0!important;">
+                                            <button type="button" class="btn btn-default input-sm" id="search_submit"><i
+                                                    class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-btn" style="width: 0!important;">
+                                        <input name="model" value="assets" hidden>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover dataTable oplog-table">
+                                    <thead class="oplog-head">
+                                    <tr>
+                                        <th>操作人</th>
+                                        <th>操作行为</th>
+                                        <th>操作对象类别</th>
+                                        <th>操作对象</th>
+                                        <th>操作日期</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="oplog-body">
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="box-footer no-padding" id="pagination">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

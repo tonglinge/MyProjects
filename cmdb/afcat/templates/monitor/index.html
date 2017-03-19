@@ -1,0 +1,86 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link href="/static/css/monitor/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/js/libs/highcharts/5.0.2/code/css/highcharts.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/monitor/monitor"], function(monitor) {
+        monitor.triggerMonitorIndex();
+    });
+{% endblock %}
+{% block content %}
+    <section class="content monitor_dashboard">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">主机组当前状态</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-9 host_groups_status"></div>
+                        <div class="col-md-3">
+                            <p class="text-center">
+                                <strong>总览</strong>
+                            </p>
+                            <div class="progress-group" id="total_normal_count">
+                                <span class="progress-text">正常</span>
+                                <span class="progress-number"><b>80</b>/200</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-green" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-group" id="total_issue_count">
+                                <span class="progress-text">故障</span>
+                                <span class="progress-number"><b>110</b>/200</span>
+                                <div class="progress sm">
+                                    <div class="progress-bar progress-bar-red" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">最新告警事件</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="col-md-12">
+                            <table class="table table-hover event_trigger_status">
+                                <thead>
+                                    <tr>
+                                        <th>严重性</th>
+                                        <th>告警时间</th>
+                                        <th>确认</th>
+                                        <th>主机名</th>
+                                        <th>信息</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row top_data_show"></div>
+    </section>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+    cmdb.triggerServerAsset()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><i class="fa fa-eye"></i>服务器设备</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-30 server-asset-app">
+        <div class="row server-asset">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <div class="btn-group">
+                            <a type="button" class="btn btn-primary input-sm" id="btn_add_server_asset"
+                               href="{% url 'cmdb_templates' 'modify_server_asset' %}?action=new"
+                               style="float:left">添加</a>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary input-sm" id="export_server_asset"
+                                    style="float:left"><i class="fa fa-download"></i>导出
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <div class="dropdown" style="float:left;position:relative; z-index:9999;height:100%;">
+                                <button class="btn btn-primary input-sm" id="dLabel" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    显示/隐藏列
+                                    <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    <li><input type="checkbox" class="toggle-vis" data-column="0"/>服务器分类</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="1"/>机柜信息</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="2"/>单元信息</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="3"/>型号</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="4"/>序列号</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="5"/>CPU</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="6"/>内存</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="7"/>包含主机</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="8"/>过保日期</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="box-tools pull-right">
+                            <form role="form" class="form-inline" action="/cmdb/exportexcel/" id="search-form">
+                                <div class="form-group">
+                                    <!--<div class="input-group">
+                                        <div class="input-group-btn" style="width: 0!important;">
+                                            <select name="type" class="form-control search_key input-sm"
+                                                    style="width:120px;">
+                                            </select>
+                                        </div>
+
+                                    </div> -->
+                                    <div class="input-group pull-right">
+                                        <input type="text" name="content" id="search_value" style="width: 300px;"
+                                               class="form-control input-sm" placeholder="设备sn,型号,使用用途,管理IP,网络区域,状态">
+                                        <div class="input-group-btn" style="width: 0!important;">
+                                            <button type="button" class="btn btn-default input-sm" id="search_submit"><i
+                                                    class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-btn" style="width: 0!important;">
+                                        <input name="model" value="assets" hidden>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover dataTable asset-table">
+                                    <thead class="asset-head">
+                                    <tr>
+                                        <th>服务器分类</th>
+                                        <th>机柜信息</th>
+                                        <th>单元信息(U)</th>
+                                        <th>型号</th>
+                                        <th>序列号</th>
+                                        <th>CPU(核数)</th>
+                                        <th>内存(G)</th>
+                                        <th>包含主机</th>
+                                        <th>过保日期</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="asset-body">
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="box-footer no-padding" id="pagination">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

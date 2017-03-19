@@ -1,0 +1,87 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/monitor/config_host.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/monitor/monitor"], function(monitor) {
+        monitor.triggerConfigHost();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'monitor_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">主机配置</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content config_host space-40" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">主机</h3>
+                        <div class="box-tools pull-right">
+                            <a type="button" class="btn btn-box-tool search-btn-bg add_host" href="{% url 'monitor_config_host_add' %}">创建主机</a>
+                        </div>
+                    </div>
+                    <form class="form-horizontal" id="search-form">
+                        <div class="box-body">
+                            <div class="col-md-6 col-sm-6 height-40">
+                                <label class="col-sm-3">主机名:</label>
+                                <div class="col-sm-9">
+                                    <input name="filter_host" type="text" class="form-control input-radius" placeholder="agent的主机名称">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 height-40">
+                                <label class="col-sm-3">DNS名:</label>
+                                <div class="col-sm-9">
+                                    <input name="filter_dns" type="text" class="form-control input-radius" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 height-40">
+                                <label class="col-sm-3">IP地址:</label>
+                                <div class="col-sm-9">
+                                    <input name="filter_ip" type="text" class="form-control input-radius" placeholder="IP地址模糊搜索">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 height-40">
+                                <label class="col-sm-3">端口:</label>
+                                <div class="col-sm-9">
+                                    <input name="filter_port" type="text" class="form-control input-radius" placeholder="端口精确搜索">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer search-btn">
+                            <button type="button" id="search_btn">搜 索</button>
+                            <button type="reset" >重 置</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="box box-info">
+                    <div class="box-body">
+                        <table class="table table-hover text-center hosts-table">
+                            <thead class="search-head">
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>名称</th>
+                                    <th>应用集</th>
+                                    <th>监控项</th>
+                                    <th>触发器</th>
+                                    <th>图形</th>
+                                    <th>自动发现</th>
+                                    <th>接口</th>
+                                </tr>
+                            </thead>
+                            <tbody class="hosts_tbody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'layout/base.html' %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+        cmdb.triggerAdminIndex();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">基表数据</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 cmdb_admin_index" >
+        <div class="row" id="tables_data">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <a href="#" class="btn btn-primary btn-block margin-bottom">基表数据</a>
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">基表</h3>
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding show_tables" >
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="box box-info hide record_area">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" id="table_name"></h3>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="mailbox-controls hide">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm trash_record"><i class="fa fa-trash-o" style="color: #c7254e"></i> 删除</button>
+                                <button type="button" class="btn btn-default btn-sm add_record"><i class="fa fa-plus" style="color: #5CB117"></i> 添加</button>
+                                <button type="button" class="btn btn-default btn-sm disabled return_record"><i class="fa fa-reply" style="color: #5CB117"></i> 返回</button>
+                            </div>
+                            <div class="pull-right per_records">
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm show_previous_page"><i class="fa fa-chevron-left"></i> 上一页</button>
+                                    <button type="button" class="btn btn-default btn-sm show_next_page"><i class="fa fa-chevron-right"></i> 下一页</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive mailbox-messages tables_data">
+
+                        </div>
+                    </div>
+                    <div class="box-footer no-padding">
+                        <div class="mailbox-controls hide">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm trash_record"><i class="fa fa-trash-o" style="color: #c7254e"></i> 删除</button>
+                                <button type="button" class="btn btn-default btn-sm add_record"><i class="fa fa-plus" style="color: #5CB117"></i> 添加</button>
+                                <button type="button" class="btn btn-default btn-sm disabled return_record"><i class="fa fa-reply" style="color: #5CB117"></i> 返回</button>
+                            </div>
+                            <div class="pull-right per_records">
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm show_previous_page"><i class="fa fa-chevron-left"></i> 上一页</button>
+                                    <button type="button" class="btn btn-default btn-sm show_next_page"><i class="fa fa-chevron-right"></i>下一页</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

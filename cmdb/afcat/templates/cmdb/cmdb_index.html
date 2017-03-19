@@ -1,0 +1,85 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/cmdb/cmdb_index.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+    cmdb.triggerIndex()
+    });
+{% endblock %}
+{% block content-header %}
+    <header id="cmdb_header">
+        亚联配置管理系统&nbsp;CMDB
+    </header>
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+    </ol>
+{% endblock %}
+{% block body_css %}
+    sidebar-collapse
+{% endblock %}
+{% block content %}
+    <section class="content index-app">
+        <div id="main">
+            <div id="Statistical">
+                <div class="chart_title">
+                    <i></i>
+                    <span>整体统计</span>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="chart_box col-xs-12 col-lg-6 ">
+
+                            <div class="clear"></div>
+                        </div>
+                        <div id="event" class="col-xs-12 col-lg-6  ">
+                            <h6 class="title">
+                                <i></i>
+                                <span>最近10条操作记录</span>
+                                <!--a href="" class="whole">
+                                    <em class="glyphicon glyphicon-th-large"></em>
+                                    查看全部
+                                </a -->
+                                <div class="clear"></div>
+                            </h6>
+                            <!-- 审计日志记录渲染到此 -->
+
+                            <h6 class="title2">
+                                <i></i>重大事件提醒
+                            </h6>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width:50px">序号</th>
+                                        <th class="text-center">事件</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table class="table table-hover no-border" style="margin-top: -21px;">
+                                    <tr>
+                                        <td>1</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td></td>
+                                    </tr>
+                            </table>
+                            <h6 class="title3">
+                                <i></i>统计报告
+                            </h6>
+                            <div id="repot_chart">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

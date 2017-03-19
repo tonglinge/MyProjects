@@ -1,0 +1,171 @@
+.input-radius {
+    border-radius: 12px;
+}
+
+.right-radius {
+    border-top-right-radius: 12px!important;
+    border-bottom-right-radius: 12px!important;
+}
+
+.height-40 {
+    height: 40px;
+}
+
+.padding-lr-16 {
+    padding-left: 16px!important;
+    padding-right: 16px!important;
+}
+
+.search-btn{
+    text-align: center;
+}
+.search-btn button{
+    width: 100px;
+    height: 30px;
+    background-color: #00c0ef;
+    font-weight: bolder;
+    border-radius: 12px;
+    border-style: none !important;
+    outline-style: none !important;
+}
+
+form .col-sm-3{
+    line-height: 30px;
+}
+
+.host-groups-menu{
+    z-index: 100000000;
+    position: absolute;
+    width: 90px;
+    height: 44px;
+    top: 5px;
+    left: 40px;
+    background-color: #2d4373;
+}
+.host-groups-menu ul{
+    padding: 0;
+}
+
+.host-groups-menu li{
+    list-style: none;
+    margin: 0;
+    text-align: center;
+    line-height: 22px;
+}
+
+.host-groups-menu li a{
+    cursor: pointer;
+}
+
+.host-groups-menu-item {
+    position: relative;
+    float: left;
+}
+
+.normal {
+    color: #fff;
+    background-color: #5cb85c;
+}
+.issue{
+    color: #fff;
+    background-color: #ec971f;
+}
+
+/*主机状态*/
+/*不可用*/
+.available-0 {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #ac2925;
+}
+/*可用*/
+.available-1 {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #398439;
+}
+/*停用*/
+.available-2 {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d73925;
+}
+/*严重性*/
+.priority-1 {
+    color: #fff;
+    background-color: #7499FF;
+    border-color: #00acd6;
+}
+
+.priority-1:hover {
+    background-color: #7499FF;
+    border-color: #269abc;
+}
+
+.priority-2 {
+    color: #fff;
+    background-color: #FFC859;
+    border-color: #e08e0b;
+}
+
+.priority-2:hover {
+    background-color: #FFC859;
+    border-color: #d58512;
+}
+
+.priority-3 {
+    color: #fff;
+    background-color: #FFA059;
+    border-color: #d58512;
+}
+
+.priority-4 {
+    color: #fff;
+    background-color: #E97659;
+}
+
+.priority-5 {
+    color: #fff;
+    background-color: #E45959;
+    border-color: #d73925;
+}
+
+.priority-5:hover {
+    background-color: #E45959;
+    border-color: #ac2925;
+}
+
+/*当前是否正常*/
+.issue-0 {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #008d4c;
+}
+
+.issue-0:hover {
+    background-color: #5cb85c;
+    border-color: #398439;
+}
+
+.issue-1 {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d73925;
+}
+
+.issue-1:hover {
+    background-color: #d73925;
+    border-color: #ac2925;
+}
+/*当前是否确认*/
+.ack-1 {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.ack-0 {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d73925;
+}

@@ -1,0 +1,39 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+    cmdb.triggerImportExcel()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><i class="fa fa-eye"></i>导入Excel</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 import-excel-app">
+        <div class="box box-info">
+            <div class="box-header">
+                <div class="col-sm-12">
+                    <h4>导入Excel</h4>
+                    <div class="well well-sm">
+                        <p>数据导入格式规范：</p>
+                        <ol>
+                            <li>需从下拉菜单中选择填入的字段，务必在基表中加入基础数据</li>
+                            <li>导入文件必须为.xls或.xlsx结尾的excel文件</li>
+                            <li>导入时文件模板必须和导入数据类型一致</li>
+                            <li>文件模板的title行不可修改</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="col-sm-6" id="import-excel-tabs">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

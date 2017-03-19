@@ -1,0 +1,230 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/monitor/host-groups.css">
+    <link rel="stylesheet" href="/static/js/afcat/require-module/afcat/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/account/account"], function(account) {
+        account.triggerGroupPermIndex()
+    });
+{% endblock %}
+{% block content-header %}
+
+    <ol class="breadcrumb" style="z-index: 200000000">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">组管理</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40" id="perm-list">
+    <div class="row">
+        <!-- 左侧显示组菜单 start -->
+        <div class="col-md-8">
+            <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">权限组</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding" style="overflow-y: auto;height: 150px; overflow-x: hidden;">
+              <ul class="nav nav-pills nav-stacked" id="group-list-ul">
+                  {% for group in groups %}
+                      <li >
+                          <a href="#"><i class="fa fa-group"></i> <span class="group_name" text="{{ group.name }}">{{ group.name }}</span><span hidden class="group_id">{{ group.id }}</span>
+                              <span class="pull-right">
+                                  <i class="fa fa-edit " id="btn-change-group" title="编辑"></i>&nbsp;&nbsp;&nbsp;
+                                  <i class="fa fa-times margin-r-10 " id="btn-delete-group" title="删除"></i>
+                              </span>
+                          </a>
+                      </li>
+                  {% endfor %}
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+        <!-- 左侧显示组菜单  end-->
+
+        <div class="col-md-4">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title" id="add-group-title">添加组</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="groupname" class="col-sm-2 control-label">组名</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="groupname">
+                  </div>
+                </div>
+              </div>
+
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="button" class="btn btn-primary pull-right" id="btn-add-group" action="add">添加</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+          <!-- /.box -->
+
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- 显示权限列表 start -->
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">权限列表</h3><h3 class="box-title" id="perm_show_group_name" hidden></h3>
+                    <button id="btn_update_perm" type="button" style="width:75px;" class="btn btn-block btn-success pull-right" disabled>更新权限</button>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding" >
+                    <section class="content">
+                    <div class="row">
+                        <!-- Menu Perms Start -->
+                        <div class="col-md-3">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">菜单权限</h3>
+                                </div>
+                               <div id="perm_menus" class="box-body no-padding">
+                                   <table class="table table-condensed" id="group-perm-menu-table">
+                                   <thead>
+                                    <tr>
+                                        <th style="width: 40px">菜单</th>
+                                        <th style="width: 25px">
+                                                <span><input type="checkbox" id="perm-menu-view-all">查看</span>
+                                        </th>
+                                    </tr>
+                                   </thead>
+                                   <tbody id="group-perm-menu-body">
+                                    {% for menu in group_perm.menu %}
+                                    <tr>
+                                        <td>{{ menu.name }}</td>
+                                        <td><input type="checkbox" value="{{ menu.id }}" perm="view" class="perm-menu" {% if menu.view %} checked {% endif %}></td>
+                                    </tr>
+                                   {% endfor %}
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Menu Perms End -->
+
+                        <!-- Servers Perms Start -->
+                        <div class="col-md-5">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">主机权限</h3>
+                                </div>
+                                <div id="perm-servers" class="box-body no-padding" style="height:500px; overflow-y: auto;">
+                                   <table class="table table-condensed" id="group-perm-server-table">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 50px">项目名称</th>
+                                        <th style="width: 25px">
+                                                <span><input type="checkbox" id="perm-serv-view-all">查看</span>
+                                        </th>
+                                        <th style="width: 25px">
+                                                <span><input type="checkbox" id="perm-serv-add-all">添加</span>
+                                        </th>
+                                        <th style="width: 25px">
+                                                <span><input type="checkbox" id="perm-serv-change-all">修改</span>
+                                        </th>
+                                        <th style="width: 25px">
+                                                <span><input type="checkbox" id="perm-serv-delete-all">删除</span>
+                                        </th>
+                                    </tr>
+                                   </thead>
+                                   <tbody id="group-perm-server-body">
+                                    {% for project in group_perm.projects %}
+                                    <tr>
+                                        <td>{{ project.name }}</td>
+                                        <td><input type="checkbox" value="{{ project.id }}" perm="view" class="perm-project"
+                                                {% if project.view %} checked {% endif %}>
+                                        </td>
+                                        <td><input type="checkbox" value="{{ project.id }}" perm="add" class="perm-project"
+                                                {% if project.add %} checked {% endif %}>
+                                        </td>
+                                        <td><input type="checkbox" value="{{ project.id }}" perm="change" class="perm-project"
+                                                {% if project.change %} checked {% endif %}>
+                                        </td>
+                                        <td><input type="checkbox" value="{{ project.id }}" perm="delete" class="perm-project"
+                                                {% if project.deleted %} checked {% endif %}>
+                                        </td>
+                                    </tr>
+                                   {% endfor %}
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Servers Perms Start -->
+
+                        <!-- Equipment Perms Start -->
+                        <div class="col-md-4">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">网络设备权限</h3>
+                                </div>
+                               <div id="perm_equipment" class="box-body no-padding">
+                                   <table class="table table-condensed" id="group-perm-equipment-table">
+                                   <thead>
+                                    <tr>
+                                        <th style="width: 46px">设备类型</th>
+                                        <th style="width: 28px">
+                                                <span><input type="checkbox" id="perm-equi-view-all">查看</span>
+                                        </th>
+                                        <th style="width: 28px">
+                                                <span><input type="checkbox" id="perm-equi-add-all">添加</span>
+                                        </th>
+                                        <th style="width: 28px">
+                                                <span><input type="checkbox" id="perm-equi-change-all">修改</span>
+                                        </th>
+                                        <th style="width: 28px">
+                                                <span><input type="checkbox" id="perm-equi-delete-all">删除</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody id="group-perm-equipment-body">
+                                    {% for subtype in group_perm.equipmenttype %}
+                                    <tr>
+                                            <td>{{ subtype.name }}</td>
+                                            <td><input type="checkbox" value="{{ subtype.id }}" perm="view" class="perm-type"
+                                                    {% if subtype.view %} checked {% endif %}>
+                                            </td>
+                                            <td><input type="checkbox" value="{{ subtype.id }}" perm="add" class="perm-type"
+                                                    {% if subtype.add %}  checked {% endif %}>
+                                            </td>
+                                            <td><input type="checkbox" value="{{ subtype.id }}" perm="change" class="perm-type"
+                                                       {% if subtype.change %}checked {% endif %}>
+                                            </td>
+                                            <td><input type="checkbox" value="{{ subtype.id }}" perm="delete" class="perm-type"
+                                                       {% if subtype.deleted %} checked {% endif %}>
+                                            </td>
+                                    </tr>
+                                   {% endfor %}
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Equipment Perms End -->
+                    </div>
+                </section>
+             </div>
+
+            </div>
+        </div>
+        <!-- 右侧显示权限列表 end -->
+    </div>
+
+    </section>
+{% endblock %}

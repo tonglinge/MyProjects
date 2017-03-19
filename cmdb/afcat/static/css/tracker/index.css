@@ -1,0 +1,33 @@
+*{
+    font-family: Microsoft YaHei,Arial,Helvetica;
+}
+/*导航条*/
+.list-inline li{
+    font-size:14px;
+    color:#333;
+}.list-inline li i{
+    text-decoration: underline;
+ }
+
+
+.list-inline li i{
+    font-style: normal;
+}
+.tracker_index .list-inline i{
+    color: red;
+}
+.tracker_index .fa-laptop {
+    color: #333;
+}
+.list-unstyled li a{
+    font-size:12px;
+    color:#333;
+    display: block;
+}
+.list-unstyled li a .fa{
+    font-size:32px;
+}
+.text-center{
+    padding-top:15px;
+    padding-bottom: 15px;
+}

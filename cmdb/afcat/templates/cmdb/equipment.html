@@ -1,0 +1,110 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(equipment) {
+    equipment.triggerEquipment()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'cmdb_templates' 'equipment' %}"><i class="fa fa-eye"></i>网络设备</a></li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-30 equipment-app">
+        <div class="row server-asset">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <div class="btn-group">
+                            <a type="button" class="btn btn-primary input-sm"
+                               href="{% url 'cmdb_templates' 'modify_equipment' %}?action=new" id="btn_add_equipment"
+                               style="float:left;display:none">添加</a>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary input-sm" id="export_equipment"
+                                    style="float:left"><i class="fa fa-download"></i>导出
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <div class="dropdown" style="float:left;position:relative; z-index:9999;height:100%;">
+                                <button class="btn btn-primary input-sm" id="dLabel" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    显示/隐藏列
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    <li><input type="checkbox" class="toggle-vis" data-column="0"/>设备名称</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="1"/>应用用途</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="2"/>网络区域</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="3"/>机房</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="4"/>机柜</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="5"/>U位</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="6"/>型号</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="7"/>管理IP</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="8"/>联系人</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="box-tools pull-right">
+                            <form role="form" class="form-inline" action="/cmdb/exportexcel/" id="search-form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" name="conditions" id="search_value" style="width:230px;"
+                                               class="form-control input-sm" placeholder="设备名称、序列号、管理IP">
+                                        <div class="input-group-btn" style="width: 0!important;">
+                                            <button type="button" class="btn btn-default input-sm" id="search_submit"><i
+                                                    class="fa fa-search"></i></button>
+
+                                        </div>
+                                    </div>
+                                    <div class="input-group-btn">
+                                        <input name="model" value="equipment" hidden>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover dataTable server-table">
+                                    <thead class="equipment-head">
+                                    <tr id="equipment-label">
+                                        <th>设备名称</th>
+                                        <th>分类</th>
+                                        <th>网络区域</th>
+                                        <th>机房</th>
+                                        <th>机柜</th>
+                                        <th>U位</th>
+                                        <th>设备型号</th>
+                                        <th>管理IP</th>
+                                        <th>联系人</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="equipment-body">
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="box-footer no-padding" id="pagination">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

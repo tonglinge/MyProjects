@@ -1,0 +1,87 @@
+{% extends 'layout/base.html' %}
+{% block title %}Port Choose{% endblock %}
+{% block script %}
+    <script>
+        require(["libs/domReady/2.0.1/domReady"], function (domReady) {
+            domReady(function () {
+                require(["jquery"], function ($) {
+                    function getCookie(name) {
+                        var cookieValue = null;
+                        if(document.cookie && document.cookie !== ''){
+                            var cookie = document.cookie.split(';');
+                            for(var i = 0; i < cookie.length; i++){
+                                var cookie = $.trim(cookie[i]);
+                                if (cookie.substring(0, name.length + 1) ===(name + '=')){
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+                    var csrftoken = getCookie('csrftoken');
+                    function csrfSafeMethod(method) {
+                        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                    }
+                    $.ajaxSetup({
+                        beforeSend: function (xhr, settings) {
+                            if(!csrfSafeMethod(settings.type) && !this.crossDomain){
+                                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                            }
+                        }
+                    });
+
+                    var url = "/api/v1/cmdb/?method=cmdb.edit.record&table_name=Projects";
+                    $.ajax({
+                        async: false,
+                        url:url,
+                        type: "GET",
+                        success: function (response) {
+                            $("#table-project").html(response);
+                        }
+                    });
+                    $("#add-data-btn").click(function () {
+                        var form = {};
+                        form['method'] = 'cmdb.edit.record';
+                        var table_name = "Projects";
+                        if(table_name != null){
+                            form['table_name'] = table_name;
+                        }
+                        form["id"] = $("#id_id").val();
+                        form["sysname"] = $("#id_sysname").val();
+                        form["sysalias"] = $("#id_sysalias").val();
+                        form["company"] = $("#company").val();
+                        form["syslevel"] = $("#id_syslevel").val();
+                        form["disasterlevel"] = $("#id_disasterlevel").val();
+                        form["cust"] = $("#id_cust").val();
+                        form["itemsset"] = $("#id_itemsset").val();
+
+                        $.ajax({
+                            async: false,
+                            url:"/api/v1/cmdb/",
+                            type: "POST",
+                            data: form,
+                            success: function (response) {
+                                $("#table-project").html(response);
+                                $("#reload-data", window.opener.document).trigger("click");
+                            },
+                        });
+                    })
+                });
+            });
+        });
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="col-xs-12 box-body" style="margin-top: 10px;">
+        <div class="box-header">
+
+        </div>
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-bordered" id="table-project" style="font-size:12px;">
+
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

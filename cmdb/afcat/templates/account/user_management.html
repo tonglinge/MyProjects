@@ -1,0 +1,208 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/monitor/host-groups.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-select/1.12.1/dist/css/bootstrap-select.min.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/account/account"], function(users) {
+        users.triggerUserlistIndex();
+    });
+{% endblock %}
+{% block content-header %}
+
+    <ol class="breadcrumb" style="z-index: 200000000">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">用户管理 </li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40">
+    <div class="row" id="perm-user-manage-div">
+
+        <!-- start userlist page  -->
+        <div class="col-md-12" id="user-list">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">用户列表</h3>
+                    <button id="btn_show_add" type="button" style="width:75px;" class="btn btn-block btn-success pull-right" >添加</button>
+                </div>
+
+                <div class="box-body no-padding" >
+                    <section class="content">
+                        <div class="row">
+                            <!-- Menu Perms Start -->
+                            <div class="col-md-12">
+                                <div class="box">
+                                   <div id="perm-users" class="box-body no-padding">
+                                       <table class="table table-condensed text-center text-middle" id="perm-user-list-table">
+                                       <thead >
+                                        <tr>
+                                            <th style="width: 5%">用户名</th>
+                                            <th style="width: 5%">头像</th>
+                                            <th style="width: 8%">昵称/姓名</th>
+                                            <th style="width: 10%">邮箱</th>
+                                            <th style="width: 8%">用户类型</th>
+                                            <th style="width: 10%">所属组</th>
+                                            <th style="width: 10%">所属客户</th>
+                                            <th style="width: 10%">用户状态</th>
+                                            <th style="width: 10%">注册日期</th>
+                                            <th style="width: 10%">最后登录日期</th>
+                                            <th style="width: 8%"></th>
+                                        </tr>
+                                       </thead>
+                                       <tbody id="perm-user-list-body">
+
+                                        </tbody></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu Perms End -->
+
+                    </div>
+                    </section>
+                 </div>
+            </div>
+        </div>
+        <!-- End userlist page -->
+
+        <!-- create user page -->
+        <div class="col-md-12 " id="user-add" hidden >
+            <div class="box box-info">
+
+                <div class="box-header with-border">
+                  <h3 class="box-title" id="create-page-title">添加用户</h3>
+                </div>
+
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                  <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-7 has-feedback">
+                        <input class="form-control" id="user-username" placeholder="用户名" type="text">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="nickname" class="col-sm-2 control-label">昵称/姓名</label>
+                    <div class="col-sm-7 has-feedback">
+                        <input class="form-control" placeholder="昵称" type="text" id="user-nickname">
+                        <span class="glyphicon glyphicon-heart form-control-feedback"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group has-feedback">
+                      <label for="password" class="col-sm-2 control-label">密码</label>
+                      <div class="col-sm-7">
+                          <input class="form-control" id="user-password" placeholder="密码(不少于5位)" type="password">
+                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                      </div>
+                  </div>
+
+                  <div class="form-group has-feedback">
+                      <label for="confirmpassword" class="col-sm-2 control-label">确认密码</label>
+                      <div class="col-sm-7">
+                          <input class="form-control" id="confirmpassword" placeholder="确认密码(不少于5位)"  type="password">
+                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="nickname" class="col-sm-2 control-label">邮箱</label>
+                    <div class="col-sm-7 has-feedback">
+                        <input class="form-control" placeholder="邮箱" type="text" id="user-email">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group has-feedback">
+                      <label for="is_superuser" class="col-sm-2 control-label">用户类型</label>
+                      <div class="col-sm-7">
+                          <select class="form-control" id="is-superuser">
+                            <option value="0" selected>普通用户</option>
+                            <option value="1">管理员用户</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="form-group has-feedback">
+                      <label for="is_superuser" class="col-sm-2 control-label">管理客户</label>
+                      <div class="col-sm-7">
+                          <select class="form-control selectpicker" id="belong-cust" multiple>
+                            <option value="0" selected>--请选择--</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="form-group has-feedback">
+                      <label for="groups" class="col-sm-2 control-label">权限组</label>
+                      <div class="col-sm-7">
+                          <select class="form-control" id="user-groups">
+                            <option value="0" selected>--请选择--</option>
+
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="form-group has-feedback">
+                      <label for="is_active" class="col-sm-2 control-label">用户状态</label>
+                      <div class="col-sm-7">
+                          <input type="radio" name="inlineRadioOptions"  value="1" data-txt="活动" checked> 活动
+                          <input type="radio" name="inlineRadioOptions"  value="0" data-txt="锁定"> 锁定
+                      </div>
+                  </div>
+
+                  <div class="form-group has-feedback">
+                      <label for="is_active" class="col-sm-2 control-label">上传头像</label>
+                      <div class="col-sm-7">
+                          <form enctype="multipart/form-data" method="post" id="form_sendfile" action="" >
+                            <div class="modal-body">
+                                <img style="width:30px; height: 30px; float:left; border-color: white;" id="img-show-head">
+                                <input type="file" name="file" id="upfile" accept="image/*"><input type="text" id="send_type" name="send_type" hidden value="img">
+                                <label id="head-img" hidden></label>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+
+              </div>
+              <!-- /.box-body -->
+                <div class="box-footer">
+                    <span class="col-sm-3"></span>
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-default" id="cancel-user-add">取消</button>
+                        <button type="button" class="btn btn-info pull-right" id="summit-user-add" action="add">确定</button>
+                    </div>
+                    <span class="col-sm-6"></span>
+                </div>
+              <!-- /.box-footer -->
+            </form>
+            </div>
+
+        </div>
+        <!-- End create page-->
+
+        <!-- change password -->
+        <div class="modal fade bs-example-modal-sm" id="user-password-reset" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">重置密码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><input type="password" class="form-control" id="text-resetPassword" placeholder="新密码(不少于5位)"> </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="btn-resetPassword">修改</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- end change password-->
+
+    </div>
+    </section>
+{% endblock %}

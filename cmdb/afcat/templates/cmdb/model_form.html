@@ -1,0 +1,16 @@
+{% if error_message %}
+    <span class="bg-danger">{{ error_message }}</span>
+{% else %}
+    <span class="bg-success">{{ message }}</span>
+{% endif %}
+<form action="">
+    {% for item in model_form %}
+        <div class="form-group col-sm-7 col-sm-offset-2 col-md-5 col-md-offset-2">
+            {{ item.label_tag }}
+            {{ item }}<span class="bg-danger">{{ item.errors.as_text }}</span>
+        </div>
+    {% endfor %}
+    <div class="form-group col-sm-7 col-sm-offset-2 col-md-5 col-md-offset-2">
+        <button id="add-data-btn" type="button" class="form-control bt bg-primary btn-success">{{ btn_type }}</button>
+    </div>
+</form>

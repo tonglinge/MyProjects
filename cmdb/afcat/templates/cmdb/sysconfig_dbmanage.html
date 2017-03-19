@@ -1,0 +1,86 @@
+{% extends 'layout/base.html' %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+        cmdb.triggerSysconfigDBBackup();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">数据管理</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 sysconfig-backupdb">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">数据备份</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">备份说明</label>
+                                <input class="form-control" id="id-backupmemo" type="text">
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="button" class="btn btn-primary" id="id-btn-newbackup">新增备份</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="box box-info record_area">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" id="table_name"></h3>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="table-responsive mailbox-messages backup-data">
+                            <table class="table table-hover  ">
+                                <thead class="backupdb-head">
+                                    <tr>
+                                        <th width="6%">序号</th>
+                                        <th width="10%">文件名称</th>
+                                        <th width="20%">备份日期</th>
+                                        <th width="10%">操作人</th>
+                                        <th width="44%">备注</th>
+                                        <th width="10%">操作</th>
+                                    <tr>
+                                </thead>
+                                <tbody class="backupdb-body">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="box-footer no-padding">
+                        <div class="mailbox-controls ">
+                            <div class="pull-right per_records">
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm show_previous_page"><i
+                                            class="fa fa-chevron-left"></i> 上一页
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm show_next_page"><i
+                                            class="fa fa-chevron-right"></i>下一页
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+{% endblock %}

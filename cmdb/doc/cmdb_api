@@ -1,0 +1,428 @@
+
+# HOST 原Server
+主机修改和添加的方式和以前一样，不变，只是提交的数据发生变化
+添加时：
+    post_data= {
+                "asset": {
+                        "hostname": "host003",
+                        "type_id":10016,
+                        "ownserver_id":10011,
+                        "tradedate": "2016-09-01",
+                        "expiredate":"2016-09-01",
+                         "model": "P570",
+                         "netarea_id": 10011,
+                         "runningstatus_id":10011,
+                         "remark":""，
+                         “partition":"2"
+				        },
+                "business": [10011,10012],
+                "action":"new",
+                "model":"server"
+			}
+编辑时：post_data={
+             "asset": {
+                    "hostname": "host003",
+                    "type_id":10016,
+                    "ownserver_id":10011,
+                    "tradedate": "2016-09-01",
+                    "expiredate":"2016-09-01",
+                     "model": "P570",
+                     "netarea_id": 10011,
+                     "runningstatus_id":10011,
+                     "remark":"",
+                     "partition":"3"
+                },
+            "business": [10011,10012],
+            "action":"edit",
+            "sid":10012 ,
+            "model":"server"
+        }
+删除时：  data:{"action":“delete","sid":10012, "model":"server"}  返回成功失败
+
+*************************************************************** 新修改和增加接口信息 *************************************************************************************
+1 服务器设备资产信息添加板卡（网卡和存储卡信息）
+ 提交板卡信息： /cmdb/servboardcard/
+ 请求方式： post
+ 请求数据：
+       添加板卡：
+         {"value":{ “sn":"aaaa", "model":"adsfasd", "cardtype":1, "mac":"00-99-00-29-90“, "slot":"di9", ”remark":"xxxx", "factory_id":10012, "server_id":10011, "ports":"1,2"},"action":"new"}
+       编辑板卡:
+        {"value":{“id":10011,  “sn":"aaaa", "model":"adsfasd", "cardtype":1, "mac":"00-99-00-29-90“, "slot":"di9", ”remark":"xxxx", "factory_id":10012, "server_id":10011, "ports":[{“id":10010,"portname":"aa"},{”id":0,"portname":"bbb"}] },"action":"edit"}
+       当编辑时候port端口的id=0，表示是新增的端口
+       删除板卡
+        {"value":{"id":10011}, "action":"del"}
+
+ 备注：
+  cardtype： 1 网卡 2 存储卡
+
+2 添加服务器资产的VG 信息
+   请求地址：cmdb/relatedasset/
+   请求方式：POST
+   请求参数：
+   		添加VG:            {"asset":"StorageVG", "value": {"vgname":"vg001", "vgsize":500,"raidtype_id":10011,"server_id":10014,"remark":"xxxx"},"action":"new"}
+   		编辑VG:            {"asset":"StorageVG", "value": {"id":10011, "vgname":"vg001", "vgsize":500,"raidtype_id":10011,"server_id":10014,"remark":"xxxx"},"action":"edit"}
+   		删除VG:            {"asset":"StorageVG", "value": {"id":10011} "action":"del"}
+
+ 3   添加服务器资产VG的LV 信息
+   请求地址：cmdb/relatedasset/
+   请求方式：POST
+   请求参数：
+   		添加VG:            {"asset":"StorageLV", "value": {"lvname":"lv001", "lvsize":100,"filesystem":"/root","vg_id":10014,"remark":"xxxx"},"action":"new"}
+   		编辑VG:            {"asset":"StorageLV", "value": {"id":10011, "lvname":"lv001", "lvsize":100,"filesystem":"/root","vg_id":10014,"remark":"xxxx"},"action":"edit"}
+   		删除VG:            {"asset":"StorageLV", "value": {"id":10011} "action":"del"}
+
+ 4   添加服务器资产VG的PV信息
+   请求地址：cmdb/relatedasset/
+   请求方式：POST
+   请求参数：
+   		添加VG:            {"asset":"StoragePV", "value": {"pvname":"lv001", "pvsize":100,"vg_id":10014,"remark":"xxxx"},"action":"new"}
+   		编辑VG:            {"asset":"StoragePV", "value": {"id":10011, "pvname":"lv001", "pvsize":100,"vg_id":10014,"remark":"xxxx"},"action":"edit"}
+   		删除VG:            {"asset":"StoragePV", "value": {"id":10011} "action":"del"}
+
+ 5 获取vg的详细信息
+   请求地址：cmdb/vgdetail/
+   请求方式：GET
+   请求参数：
+          {id: vgid}
+   返回数据：
+        {"vg":{}, "pv":[{},{}],"lv":[{},{}]}
+
+ 6 获取主机的板卡的详细信息，返回主机的某一块板卡的详细信息及该板卡下的所有端口信息
+   请求地址：cmdb/servboardcard/
+   请求方式： GET
+   请求参数:
+           {"cardid": 10011}
+   返回数据：
+        {"card": {}, "ports": [{}, {}, {} ]}
+
+ 7 网络板卡端口的修改（增加单条、修改、删除）接口
+   请求地址： cmdb/basedata/
+   请求方式：POST
+   请求参数：
+   		添加端口： {“table":"PortList", "value":{"object_pk":10011,"portname":"E1/0","porttype":"光口","flag":2,"valan":102,"remark":"xxx"},"action":"new"}
+   		编辑端口： {“table":"PortList", "value":{"id":10011, "object_pk":10011,"portname":"E1/0","porttype":"光口","flag":2,"valan":102,"remark":"xxx"},"action":"edit"}
+   		删除端口： {“table":"PortList", "value":{"id":10011 },"action":"del"}
+   备注：  object_pk: 板卡的id
+          id：  记录id，也就是端口的id
+          flag： 板卡标识，固定值 2
+
+8  网络设备端口映射接口
+   请求地址： cmdb/modifyportmap/
+   请求方式：POST
+   请求参数：
+   		添加端口： {"value":{"portname":"E1/0","card_id":10011, "targetport_id":10012, "remark":"xxx" },"action":"new"}
+   		编辑端口： {"value":{"id":10012, "portname":"E1/0","card_id":10011, "targetport_id":10012, "remark":"xxx" },"action":"edit"}
+   		删除端口： {"value":{"id":10011}, "action":"delete"}
+---------------------------------------------------------------------------
+
+1 主页获取数据接口,返回3个echars 饼图的接口
+  接口地址: /api/v1/afcat/?method=cmdb.reportindex.get_record
+
+2 excel上传并导入接口
+  接口地址: /cmdb/dataimport
+  需要参数:
+    template_type: 导入数据的对象(导入到哪),值包括:
+        assets: 服务器设备类型
+        equipment: 网络设备类型
+        server: 主机类型
+        base: 基表类型
+  返回信息：
+    返回失败的记录信息
+
+3 下载模板接口
+  接口地址: /cmdb/downtemplate
+  请求方式: GET
+  需要参数:
+    template_type: 下载的模板类型，值包括:
+        assets: 服务器设备类型
+        equipment: 网络设备类型
+        server: 主机类型
+        base: 基表类型
+    file_type: 下载的模板文件类型, 值：
+        0： 样例文件
+        1:  模板文件
+
+二 IP配置管理部分
+
+1 获取IP规划首页的信息
+ 接口地址: /api/v1/afcat
+ 参数：
+   method:cmdb.ipmanagement.info
+   ip_id: 要显示(展开)的IP的id号, 第一次加载页面时只显示左右顶层的IP信息，不需要此参数,当点击某个IP显示其子网是需要带这个参数
+   page：当前页码
+ 返回结果:
+   {
+    "status": true,
+    "has_next": false,
+    "has_previous": false,
+    "data": {
+        "ip_tree": [
+            {
+                "id": 10011,
+                "ip": "40.0.0.0/8"
+            }
+        ],
+        "ip_design": {
+            "record":[
+                {
+                    "id": 10011,
+                    "ipcounts": 256,
+                    "netarea": "",
+                    "datacenter": "马连道灾备数据中心",
+                    "remark": null,
+                    "ipaddr": "40.0.0.0/8"
+                }],
+            "num_pages": 2,
+            "curr_page": 1,
+            "total_count": 40
+        },
+        "ip_allocate": {
+            "record":[
+                {
+                    "id": 10011,
+                    "ipaddr": "40.1.1.2",
+                    "ipmask": "40.1.1.0/24",
+                    "status": "已分配",
+                    "allocateuser": "cmdb",
+                    "allocatedate": "2017-02-02",
+                    "allocateto": "资金系统APP,DB",
+                    "binded":"bshx_host001",
+                    "vlan": "100-102",
+                    "usefor":"",
+                    "remark":""
+                }],
+            "num_pages": 1,
+            "curr_page": 1,
+            "total_count": 1
+        }
+    },
+    "info": "",
+    "category": "success"
+    }
+ 说明:
+     ip_tree: 树状的显示信息,页面加载显示所有A类地址，点击具体某个IP后返回该IP的子网信息
+     ip_design: IP规划的显示信息
+     ip_allocate: IP管理分配的信息
+
+
+2 划分子网操作
+  接口地址: /api/v1/afcat
+  请求方式: POST
+  参数：
+   method: cmdb.ipmanagement.allocation
+   data:
+       new:
+           {"value":{"ipaddr":"40.0.0.0","maskbits":24,"counts":256,"netarea_id":10013,
+                 "datacenter_id":10012,"remark":"xxxx","parentip_id":10012,"vlan": "100-102","usefor":""},
+           "action:"new",
+           "type":"subnet" }
+       delete:
+           {"value":{"id":10011},
+            "action":"delete",
+            "type":"subnet" }
+       edit:
+           {"value":{"id":10012,"ipaddr":"40.0.0.0","maskbits":24,"counts":256,"netarea_id":10013,
+                 "datacenter_id":10012,"remark":"xxxx","parentip_id":10012,"vlan": "100-102","usefor":"",},
+           "action":"edit",
+           "type":"subnet" }
+       备注：以上数据封装到data中提交
+       {"data":{....}}
+
+3 请求基表数据：
+地址：cmdb/basedata/
+参数：data={"tables":["BaseDataCenter","BaseNetArea"]}
+返回数据中心与网络区域数据
+格式：
+{
+    "info": "",
+    "status": true,
+    "category": "success",
+    "has_previous": false,
+    "has_next": false,
+    "data": {
+        "basedatacenter": [
+            {
+                "id": 10017,
+                "name": "亦庄数据中心"
+            },
+            {
+                "id": 10018,
+                "name": "西红门数据中心"
+            },
+            {
+                "id": 10015,
+                "name": "马连道灾备数据中心"
+            }
+        ],
+        "basenetarea": [
+            {
+                "id": 10017,
+                "name": "互联网后台"
+            },
+            {
+                "id": 10015,
+                "name": "互联网隔离区"
+            },
+            {
+                "id": 10012,
+                "name": "办公后台"
+            },
+            {
+                "id": 10018,
+                "name": "外联隔离"
+            },
+            {
+                "id": 10016,
+                "name": "外联隔离"
+            },
+            {
+                "id": 10011,
+                "name": "生产后台"
+            },
+            {
+                "id": 10013,
+                "name": "电话银行"
+            },
+            {
+                "id": 10014,
+                "name": "管理区"
+            }
+        ]
+    }
+}
+
+
+4 分配IP操作
+  接口地址: /api/v1/afcat
+  请求方式: POST
+  参数:
+   method: cmdb.ipmanagement.allocation
+   data:
+        new: {"value":{"ipmask_id":10016,
+                       "startip":"40.1.1.4",
+                       "endip":"40.1.1.5",
+                       "status":2,
+                       "allocateto":"资金系统DB",
+                       "vlan":102},
+              "action": "new",
+              "type": "ip"
+              }
+        备注: new操作是在IP规划部分进行分配IP地址, status: 当前IP的状态 ('1', '已预留'), ('2', '已分配'), ('3', '已使用'), ('4', '待回收')
+
+        edit:  {"value": {"id":10011,
+                          "remark":"aaaa",
+                          "allocateto":"xxxx",
+                          "vlan":100 },
+                "action": "edit",
+                "type": "ip"  }
+
+        delete: {"value":{"id": 10011, "action":"delete", "type":"ip"}
+
+        备注：删除相当于回收IP地址,当IP地址处于 已预留/待回收/已分配 3状态能删除, 已使用状态不能回收（删除),提交时需要验证并提示
+
+
+
+5 点击IP管理(显示IP分配信息)的页面
+  接口地址： /api/v1/afcat/
+  请求方式：GET
+  参数：
+      method: cmdb.ipmanagement.ipinfo
+      condition: "40.1.1"
+      status: "XXX"
+      page: 1
+      备注:
+          condition 为模糊匹配时的条件,主要为IP分配表中的IP地址模糊查询
+          page: 当前页码
+
+6 搜索IP规划的页面（模糊搜索）
+  接口地址：/api/v1/afcat/
+  请求方式： GET
+  参数:
+      method: cmdb.ipmanagement.subnet_info
+      condition: "40.1.1"
+      page: 1
+
+7 导出ip分配的文件到excel
+  接口地址：/cmdb/exportexcel/
+  请求方式：GET
+  参数：
+      model:ipmanage
+      file_type: ipallocate
+      conditions: xxxx
+
+  备注: form 提交,js 事件 submit()
+
+三 F5 映射管理
+1 获取所有数据
+   地址: /api/v1/afcat/
+   请求方式： GET
+   请求参数：
+       method: cmdb.balancemapping.info
+       condition: "xxxxxx"
+       page: 1
+   返回结果：
+
+ 2 F5 映射编辑、添加、删除
+   地址： /api/v1/afcat/
+   请求方式： POST
+   请求参数：
+       method: cmdb.balancemapping.operate
+       data:
+        new: {"value":{"vsname":"daishoufa_app_21_vs",
+                       "vsaddr":"40.1.138.1",
+                       "port":16001,
+                       "snataddr":"40.1.138.192,40.1.138.193",
+                       "pooladdr":"40.1.10.1:16001,40.1.10.2:16001",
+                       "vlan":102,
+                       "datacenter_id":10012,
+                       "netarea_id":10012,
+                       "ploy":10013,
+                       "project_id":10014,
+                       "business":"10012,10014",
+                       "hosttype":"P780",
+                       "hostname":"host01,host02"},
+              "action": "new"
+            }
+        edit: {"value":{"id":10011,
+                        "vsname":"daishoufa_app_21_vs",
+                        "vsaddr":"40.1.138.1",
+                        "port":16001,
+                        "snataddr":"40.1.138.192,40.1.138.193",
+                        "pooladdr":"40.1.10.1:16001,40.1.10.2:16001",
+                        "vlan":102,
+                        "datacenter_id":10012,
+                        "netarea_id":10012,
+                        "ploy":10013,
+                        "project_id":10014,
+                        "business":"10012,10014",
+                        "hosttype":"P780",
+                        "hostname":"host01,host02"}
+               "action": "edit"
+               }
+        delete: {"value": {"id": 10013}, "action":"delete"}
+
+
+-------- 20170-03-09 ---------------
+1 获取所有审计记录的接口
+  url地址： /api/v1/afcat
+  参数： method: cmdb.reportindex.audit
+        page: 1 // 分页时跟当前页码
+        per_count: xx  // xx为每页显示的数据记录数，非必选项， 不加默认15条记录
+
+-------- 2017-03-13 -----------
+
+1 获取网络设备自定义字段的名称 及扩展字段的名称
+  url地址: /api/v1/afcat
+  参数： method: cmdb.tableproperty.load_filed_alias
+        models：Equipment
+  请求方式：GET
+
+2 对于自定义字段及扩展字典POST数据:
+   保持现有数据格式不变化, 在现有数据内容上增加： {"customer001":"xxx", "customer002":"xxxx"}
+
+3 创建自定义扩展列
+  url: /aip/v1/afcat
+  参数: method: cmdb.tableproperty.createfield
+       models: Equipment
+       label: "xxxx"    # 显示的label标签名称
+  请求方式： POST

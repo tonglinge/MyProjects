@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/tracker/host.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/tracker/tracker"], function(tracker) {
+        tracker.triggerHost();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'tracker_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">主机列表</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 tracker_host" >
+        <div class="row">
+            <div class="col-md-12">
+              
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

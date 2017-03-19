@@ -1,0 +1,292 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/tracker/host.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-switch/3.3.2/dist/css/bootstrap3/bootstrap-switch.min.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/tracker/tracker"], function(tracker) {
+        tracker.triggerEvents();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'tracker_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">告警事件</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 tracker_events" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <form role="form">
+                        <div class="box-body">
+
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">主&nbsp;&nbsp;机&nbsp;组</div>
+                                    <input class="form-control" type="text" placeholder="主机组">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">应&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用</div>
+                                    <input class="form-control" type="text" placeholder="应用">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">主&nbsp;&nbsp;机&nbsp;名</div>
+                                    <input class="form-control" type="text" placeholder="主机名">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">IP&nbsp;地&nbsp;&nbsp;址</div>
+                                    <input class="form-control" type="text" placeholder="ip地址">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</div>
+                                    <input class="form-control" type="text" placeholder="级别">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态</div>
+                                    <input class="form-control" type="text" placeholder="状态">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;间</div>
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1H" data-off-text="1H" checked>
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1D" data-off-text="1D">
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1W" data-off-text="1W">
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1M" data-off-text="1M">
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="3M" data-off-text="3M">
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="6M" data-off-text="6M">
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="1Y" data-off-text="1Y">
+                                    <input type="radio" name="event" data-radio-all-off="true" class="switch-radio2" value="option2" data-size="mini" data-on-text="2Y" data-off-text="2Y">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</div>
+                                    <input class="form-control" type="text" placeholder="类型">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">确认状态</div>
+                                    <input class="form-control" type="text" placeholder="确认状态">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">是否告警</div>
+                                    <input class="form-control" type="text" placeholder="是否告警">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer text-center search-btn">
+                            <button type="button">搜 索</button>
+                            <button type="reset">重 置</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="box box-info">
+                    <div class="box-body">
+                        <table class="table table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>主机名</th>
+                                    <th>IP</th>
+                                    <th>应用名</th>
+                                    <th>级别</th>
+                                    <th>类型</th>
+                                    <th>消息</th>
+                                    <th>确认</th>
+                                    <th>历史</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr><tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr><tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                                <tr>
+                                    <td>2016-11-22 14:17:00</td>
+                                    <td>mysql-master</td>
+                                    <td>172.16.0.128</td>
+                                    <td>数据库</td>
+                                    <td class="bg-danger">严重</td>
+                                    <td>数据</td>
+                                    <td>mysql can't connection</td>
+                                    <td>否</td>
+                                    <td>历史数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

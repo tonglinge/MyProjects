@@ -1,0 +1,19 @@
+.normal {
+    color: #00AA00;
+}
+.issue{
+    color: #DC0000
+}
+
+.yes {
+    color: #429e47;
+}
+.no {
+    color: #e33734;
+}
+.normal-bg {
+    background-color: #59db8f;
+}
+.average-bg {
+    background-color: #FFA059;
+}

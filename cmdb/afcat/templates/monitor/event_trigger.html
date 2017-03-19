@@ -1,0 +1,144 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/css/monitor/emergency_event.css">
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/monitor/monitor"], function(monitor) {
+        monitor.triggerEventTrigger();
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'monitor_index' %}"><i class="fa fa-eye"></i> 监控</a></li>
+        <li class="active">告警事件</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40" id="event_trigger">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">搜索告警事件</h3>
+                    </div>
+                    <form class="form-horizontal" >
+                        <div class="box-body">
+
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label class="col-xs-3 col-md-3 col-sm-3">主机组:</label>
+                                <div class="col-xs-9 col-md-9 col-sm-9">
+                                    <select id="group_id" name="group_id" class="form-control input-radius" >
+                                        <option value="">所有</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label class="col-xs-3 col-md-3 col-sm-3">主机名:</label>
+                                <div class="col-xs-9 col-md-9 col-sm-9">
+                                    <select id="host_id" name="host_id" class="form-control input-radius" >
+                                        <option value="">所有</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label class="col-xs-3 col-md-3 col-sm-3">IP地址</label>
+                                <div class="col-xs-9 col-md-9 col-sm-9">
+                                    <input type="text" class="form-control input-radius" name="ip_address" placeholder="地址模糊搜索">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label class="col-xs-3 col-md-3 col-sm-3">故障级别:</label>
+                                <div class="col-xs-9 col-md-9 col-sm-9">
+                                    <select class="form-control input-radius" name="issue-level">
+                                        <option value="">未定义</option>
+                                        <option value="1">信息</option>
+                                        <option value="2">警告</option>
+                                        <option value="3">一般严重</option>
+                                        <option value="4">严重</option>
+                                        <option value="5">灾难</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label class="col-xs-3 col-md-3 col-sm-3">确认状态:</label>
+                                <div class="col-xs-9 col-md-9 col-sm-9">
+                                    <select name="ack" class="form-control input-radius">
+                                        <option value="">所有</option>
+                                        <option value="0">未确认的事件</option>
+                                        <option value="1">已确认的事件</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label for="trigger_end-time" class="col-xs-3 col-md-3 col-sm-3">事件截止时间:</label>
+                                <div class="input-group date form_datetime col-xs-9 col-md-9 col-sm-9 padding-lr-16" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="trigger_end-time">
+                                    <input class="form-control input-radius" size="16" type="text" value="" name="trigger_end_time" readonly placeholder="单个触发事件截止时间">
+                                    <span class="input-group-addon right-radius"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                                <input type="hidden" id="trigger_end_time" value="" /><br/>
+                            </div>
+
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label for="event-start-time" class="col-xs-3 col-md-3 col-sm-3">告警起始时间:</label>
+                                <div class="input-group date form_datetime col-xs-9 col-md-9 col-sm-9 padding-lr-16" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="event-start-time">
+                                    <input class="form-control input-radius" size="16" type="text" value="" name="start_time" readonly>
+                                    <span class="input-group-addon right-radius"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                                <input type="hidden" id="event-start-time" value="" /><br/>
+                            </div>
+                            <div class="col-xs-6 col-md-6 col-sm-6 height-40">
+                                <label for="event-end-time" class="col-xs-3 col-md-3 col-sm-3">告警截止时间:</label>
+                                <div class="input-group date form_datetime col-xs-9 col-md-9 col-sm-9 padding-lr-16" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="event-end-time">
+                                    <input class="form-control input-radius" size="16" type="text" value="" name="end_time" readonly>
+                                    <span class="input-group-addon right-radius"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                                <input type="hidden" id="event-end-time" value="" /><br/>
+                            </div>
+                        </div>
+                        <div class="box-footer search-btn">
+                                <button type="button" id="search-btn">搜 索</button>
+                                <button type="reset">重 置</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row search-record">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-body">
+                        <table class="table table-hover text-center groups-table">
+                            <thead class="search-head">
+                                <tr>
+                                    <th></th>
+                                    <th>严重性</th>
+                                    <th>状态</th>
+                                    <th>上次状态发生时间</th>
+                                    <th>确认</th>
+                                    <th>主机</th>
+                                    <th>信息</th>
+                                </tr>
+                            </thead>
+                            <tbody class="search-tbody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+

@@ -1,0 +1,109 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/js/libs/bootstrap-datetimepicker/2.3.11/css/bootstrap-datetimepicker.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+    cmdb.triggerServerHost()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'cmdb_templates' 'server_host' %}"><i class="fa fa-eye"></i>主机管理</a></li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-30 server-asset-app">
+        <div class="row server-asset">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <div class="btn-group">
+                            <a type="button" class="btn btn-primary btn-flat input-sm" id="btn-add-server-host"
+                               href="{% url 'cmdb_templates' 'modify_server_host' %}?action=new"
+                               style="float:left;display:none">添加</a>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-flat input-sm" id="export_server_asset"
+                                    style="float:left"><i class="fa fa-download"></i>导出
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <div class="dropdown" style="float:left;position:relative; z-index:9999;height:100%;">
+                                <button class="btn btn-primary input-sm" id="dLabel" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    显示/隐藏列
+                                    <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    <li><input type="checkbox" class="toggle-vis" data-column="0"/>主机名</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="1"/>主机类型</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="2"/>业务模块</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="3"/>机柜</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="4"/>单元信息</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="5"/>联系人</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="6"/>型号</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="7"/>分区</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="8"/>网络区域</li>
+                                    <li><input type="checkbox" class="toggle-vis" data-column="9"/>备注</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="box-tools pull-right">
+                            <form role="form" class="form-inline" action="/cmdb/exportexcel/" id="search-form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                    <!--    <div class="input-group-btn">
+                                            <select name="key" class="form-control search_key input-sm">
+                                                <option value="">--选择分类--</option>
+                                                <option value="sys">业务系统</option>
+                                                <option value="ip">IP地址</option>
+                                                <option value="hostname">主机名</option>
+                                                <option value="ownserver">宿主机</option>
+                                            </select>
+                                        </div>
+                                    </div>-->
+                                    <div class="input-group pull-right">
+                                        <input type="text" name="value" id="search_value" class="form-control input-sm" style="width:230px;"
+                                               placeholder="主机名,IP,宿主机SN,所属系统名称">
+                                        <div class="input-group-btn ">
+                                            <button type="button" class="btn btn-default input-sm" id="search_submit"><i
+                                                    class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-btn">
+                                        <input name="model" value="server" hidden>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover dataTable server-table ">
+                                    <thead class="server-head">
+
+                                    </thead>
+                                    <tbody class="server-body">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="box-footer no-padding" id="pagination">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

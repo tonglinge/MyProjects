@@ -1,0 +1,117 @@
+{% extends 'layout/base.html' %}
+<script src="/static/js/libs/bootstrap-combox/js/bootstrap-suggest.min.js"></script>
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(lbmapping) {
+    lbmapping.triggerBalanceMapping();
+    });
+
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_index' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-eye"></i>F5地址映射</a></li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 lbmapping-app">
+        <div class="box box-info" id="list-info">
+            <div class="box-header">
+                <div class="col-sm-12">
+                    <div class="well well-sm" style="height: 70px;">
+                        <h5>F5地址映射用来管理F5配置映射信息,搜索条件支持vs名称、vs地址及dns域名的模糊搜索</h5>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <a type="button" class="btn btn-primary input-sm" id="btn-new">添加</a>
+                    <button type="button" class="btn btn-primary input-sm" id="export_file">
+                        <i class="fa fa-download"></i>导出
+                    </button>
+                    <div class="box-tools pull-right">
+                        <form role="form" class="form-inline" action="/cmdb/exportexcel" id="search-form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text"  name="conditions" id="search_value" class="form-control input-sm"
+                                           placeholder="vs地址,vs名称,DNS域名,SNAT地址池,服务器地址池" style="width:300px;">
+                                    <div class="input-group-btn" style="width: 0!important;">
+                                        <button type="button" class="btn btn-default input-sm" id="search_submit"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <div class="input-group-btn">
+                                    <input name="file_type" value="balancemapping" hidden>
+                                    <input name="model" value="ipmanage" hidden>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-hover dataTable server-table">
+                            <thead class="server-head text-center">
+                            <tr>
+                                <th>vs名称</th>
+                                <th>vs地址</th>
+                                <th>所属设备</th>
+                                <th>DNS域名</th>
+                                <th>SNAT地址池</th>
+                                <th>服务器地址池</th>
+                                <th>所属区域</th>
+                                <th>负载策略</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="lbmapping-body" style="vertical-align: middle;">
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer no-padding" id="pagination">
+
+            </div>
+        </div>
+
+        <!-- edit div -->
+        <div class="box box-info" style="display: none" id="edit-info">
+            <div class="box-header">
+                <h5>地址映射</h5>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-hover dataTable lb-edit-table">
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- detail info Modal -->
+        <div class="modal fade " id="Modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--  neirong -->
+                        <table class="table table-bordered">
+
+                        </table>
+                        <!--  end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

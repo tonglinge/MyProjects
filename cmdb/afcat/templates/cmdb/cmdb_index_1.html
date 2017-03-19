@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/js/libs/highcharts/5.0.2/code/css/highcharts.css">
+{% endblock %}
+{% block extra_js %}
+    require(["src/cmdb/cmdb"], function(cmdb) {
+        cmdb.triggerIndex()
+    });
+{% endblock %}
+{% block content-header %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'cmdb_templates' 'server_asset' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <section class="content space-40 index-app">
+<div id="main1" style="width: 600px;height:400px;"></div>
+    </section>
+{% endblock %}

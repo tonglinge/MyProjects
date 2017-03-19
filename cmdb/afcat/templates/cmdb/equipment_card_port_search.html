@@ -1,0 +1,75 @@
+{% extends 'layout/base.html' %}
+{% block title %}Login{% endblock %}
+{% block script %}
+    <script>
+        require(["libs/domReady/2.0.1/domReady"], function (domReady) {
+            domReady(function () {
+                require(["jquery"], function ($) {
+                    $("#id-btn-search").click(function () {
+                        $("#search-form").submit();
+                    });
+                    $(".ports").click(function () {
+                        var targetPortId = $(this).attr("id");
+                        var targetPortName = $(this).text();
+                        var targetAsset = $(this).parent().siblings().find(".asset").text();
+                        var targetPortType = $(this).parent().siblings().find(".porttype").text();
+                        console.log(targetPortName, targetPortType);
+                        var parentPort = $("#currChoose", window.opener.document).attr("chooseport");
+                        console.log(parentPort);
+                        $("#targetport-" + parentPort, window.opener.document).val(targetPortName);
+                        $("#targetasset-" + parentPort, window.opener.document).val(targetAsset);
+                        $("#targettype-" + parentPort, window.opener.document).val(targetPortType);
+                        $("#currChoose", window.opener.document).attr("targetportid", targetPortId);
+                        $("#targetid-" + parentPort, window.opener.document).val(targetPortId);
+                        $(".clear", window.opener.document).css({"display": "none"});
+                        $("#targetport-" + parentPort, window.opener.document).attr("id", targetPortId)
+                        window.close();
+                    });
+                });
+            });
+        });
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="col-xs-12 box-body" style="margin-top: 10px;">
+        <div class="box-comment">
+            <div class="box-tools">
+                <form action="{% url 'cmdb_portmap' %}" id="search-form">{% csrf_token %}
+                    <div class="pull-left input-group-sm ">
+                        <label class="input-sm pull-left">设备类型</label>
+                        <select name="porttype" class="form-control" style="width:120px;">
+                            <option value="2">网络设备</option>
+                            <option value="1">服务器设备</option>
+                        </select>
+                    </div>
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <input type="text" name="condition" class="form-control pull-right" placeholder="网络设备SN、名称、服务器主机名">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default" id="id-btn-search"><i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-bordered text-center" style="font-size:12px;">
+                <tbody>
+                <tr>
+                    <th>对端端口</th>
+                    <th>对端设备</th>
+                    <th>端口类型</th>
+                </tr>
+                {% for port in portlist %}
+                    <tr>
+                        <td><a href="#" class="ports" id="{{ port.id }}"> {{ port.portname }} </a></td>
+                        <td><span class="asset">{{ port.portasset }}</span></td>
+                        <td><span class="porttype">{{ port.porttype }}</span></td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

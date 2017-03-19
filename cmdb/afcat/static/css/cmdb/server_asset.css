@@ -1,0 +1,53 @@
+body {
+    font-size: 12px;
+}
+
+.server-asset .form-group{
+    padding: 10px 15px;
+}
+
+.server-asset .search-btn{
+    text-align: center;
+}
+.search-btn button{
+    width: 100px;
+    height: 30px;
+    background-color: #3c8dbc;
+    /*border-style: none;*/
+    font-weight: bolder;
+    border-radius: 12px;
+    outline-style: none;
+}
+
+.server-asset input[type=text]{
+    border-radius: 12px;
+}
+
+
+.server-asset form div{
+    padding-bottom: 5px;
+}
+
+.server-asset form .col-sm-3{
+    line-height: 30px;
+}
+
+.server-record {
+    margin-left: 0px;
+    margin-right: 40px;
+}
+
+table .server-table {
+    font-size: 12px;
+}
+
+.server-table td {
+    max-width: 200px;
+    word-break: break-all;
+}
+
+.div-pagination {
+    width: 100%;
+    text-align: right;
+}
+

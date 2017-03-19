@@ -1,0 +1,67 @@
+body {
+    font-size: 12px;
+}
+
+.search-btn button{
+    width: 100px;
+    height: 30px;
+    background-color: #3c8dbc;
+    /*border-style: none;*/
+    font-weight: bolder;
+    border-radius: 12px;
+    outline-style: none;
+}
+
+.server-asset input[type=text]{
+    border-radius: 12px;
+}
+
+
+.server-asset form div{
+    padding-bottom: 5px;
+}
+
+.server-asset form .col-sm-3{
+    line-height: 30px;
+}
+
+.server-record {
+    margin-left: 0px;
+    margin-right: 40px;
+}
+
+.host-groups-menu{
+    z-index: 100000000;
+    position: absolute;
+    width: 90px;
+    height: 44px;
+    top: 5px;
+    left: 20px;
+    background-color: #2d4373;
+}
+.host-groups-menu ul{
+    padding: 0;
+}
+
+.host-groups-menu li{
+    list-style: none;
+    /*padding: 5px;*/
+    /*padding-bottom: 5px;*/
+    margin: 0;
+    text-align: center;
+    line-height: 22px;
+}
+
+.host-groups-menu li a{
+    cursor: pointer;
+}
+
+.host-groups-menu-item {
+    position: relative;
+    float: left;
+}
+table th {
+    vertical-align: middle !important;
+}
+
+
